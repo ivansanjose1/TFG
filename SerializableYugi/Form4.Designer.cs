@@ -51,6 +51,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buscada = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button3 = new System.Windows.Forms.Button();
             this.panelCHK.SuspendLayout();
             this.panelgen.SuspendLayout();
             this.panelmonst.SuspendLayout();
@@ -139,7 +141,7 @@
             this.tipo.Name = "tipo";
             this.tipo.Size = new System.Drawing.Size(299, 21);
             this.tipo.TabIndex = 18;
-            this.tipo.SelectedIndexChanged += new System.EventHandler(this.tipo_SelectedIndexChanged);
+            this.tipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // set
             // 
@@ -167,6 +169,7 @@
             this.rareza.Name = "rareza";
             this.rareza.Size = new System.Drawing.Size(299, 21);
             this.rareza.TabIndex = 19;
+            this.rareza.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // copias
             // 
@@ -205,6 +208,7 @@
             this.subtipo.Name = "subtipo";
             this.subtipo.Size = new System.Drawing.Size(256, 21);
             this.subtipo.TabIndex = 33;
+            this.subtipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // ExtraDeck
             // 
@@ -219,6 +223,7 @@
             this.ExtraDeck.Name = "ExtraDeck";
             this.ExtraDeck.Size = new System.Drawing.Size(256, 21);
             this.ExtraDeck.TabIndex = 27;
+            this.ExtraDeck.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // atributo
             // 
@@ -235,6 +240,7 @@
             this.atributo.Name = "atributo";
             this.atributo.Size = new System.Drawing.Size(256, 21);
             this.atributo.TabIndex = 26;
+            this.atributo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // def
             // 
@@ -297,11 +303,23 @@
             this.buscada.Enter += new System.EventHandler(this.buscada_Enter);
             this.buscada.Leave += new System.EventHandler(this.buscada_Leave);
             // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(448, 340);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(103, 23);
+            this.button3.TabIndex = 45;
+            this.button3.Text = "Añadir Imagen";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.buscada);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -310,7 +328,7 @@
             this.Controls.Add(this.panelCHK);
             this.Name = "Form4";
             this.Text = "Form4";
-            this.Load += new System.EventHandler(this.Form4_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form4_FormClosing);
             this.panelCHK.ResumeLayout(false);
             this.panelCHK.PerformLayout();
             this.panelgen.ResumeLayout(false);
@@ -347,5 +365,7 @@
         private System.Windows.Forms.ComboBox ExtraDeck;
         private System.Windows.Forms.ComboBox atributo;
         private System.Windows.Forms.TextBox buscada;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button3;
     }
 }

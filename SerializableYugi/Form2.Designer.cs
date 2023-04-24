@@ -64,6 +64,8 @@
             this.panelmons2 = new System.Windows.Forms.Panel();
             this.panelCHK = new System.Windows.Forms.Panel();
             this.panelgen = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button2 = new System.Windows.Forms.Button();
             this.panelmonst.SuspendLayout();
             this.panelmons2.SuspendLayout();
             this.panelCHK.SuspendLayout();
@@ -105,6 +107,7 @@
             this.copias.Name = "copias";
             this.copias.Size = new System.Drawing.Size(299, 20);
             this.copias.TabIndex = 6;
+            this.copias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.copias_KeyPress);
             // 
             // niivel
             // 
@@ -112,6 +115,7 @@
             this.niivel.Name = "niivel";
             this.niivel.Size = new System.Drawing.Size(256, 20);
             this.niivel.TabIndex = 8;
+            this.niivel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.copias_KeyPress);
             // 
             // textBox10
             // 
@@ -126,6 +130,7 @@
             this.attk.Name = "attk";
             this.attk.Size = new System.Drawing.Size(256, 20);
             this.attk.TabIndex = 10;
+            this.attk.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.copias_KeyPress);
             // 
             // def
             // 
@@ -133,6 +138,7 @@
             this.def.Name = "def";
             this.def.Size = new System.Drawing.Size(256, 20);
             this.def.TabIndex = 11;
+            this.def.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.copias_KeyPress);
             // 
             // label1
             // 
@@ -195,6 +201,7 @@
             this.tipo.Name = "tipo";
             this.tipo.Size = new System.Drawing.Size(299, 21);
             this.tipo.TabIndex = 18;
+            this.tipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // rareza
             // 
@@ -208,6 +215,7 @@
             this.rareza.Name = "rareza";
             this.rareza.Size = new System.Drawing.Size(299, 21);
             this.rareza.TabIndex = 19;
+            this.rareza.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // label7
             // 
@@ -278,6 +286,7 @@
             this.atributo.Name = "atributo";
             this.atributo.Size = new System.Drawing.Size(256, 21);
             this.atributo.TabIndex = 26;
+            this.atributo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // ExtraDeck
             // 
@@ -292,6 +301,7 @@
             this.ExtraDeck.Name = "ExtraDeck";
             this.ExtraDeck.Size = new System.Drawing.Size(256, 21);
             this.ExtraDeck.TabIndex = 27;
+            this.ExtraDeck.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // labelcopias
             // 
@@ -304,7 +314,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(532, 308);
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(625, 303);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 29;
@@ -363,6 +374,7 @@
             this.subtipo.Name = "subtipo";
             this.subtipo.Size = new System.Drawing.Size(256, 21);
             this.subtipo.TabIndex = 33;
+            this.subtipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // label9
             // 
@@ -382,6 +394,7 @@
             this.panelmonst.Controls.Add(this.attk);
             this.panelmonst.Controls.Add(this.textBox10);
             this.panelmonst.Controls.Add(this.niivel);
+            this.panelmonst.Enabled = false;
             this.panelmonst.Location = new System.Drawing.Point(523, 16);
             this.panelmonst.Name = "panelmonst";
             this.panelmonst.Size = new System.Drawing.Size(277, 281);
@@ -420,16 +433,33 @@
             this.panelgen.Controls.Add(this.soporte);
             this.panelgen.Controls.Add(this.rareza);
             this.panelgen.Controls.Add(this.copias);
+            this.panelgen.Enabled = false;
             this.panelgen.Location = new System.Drawing.Point(81, 35);
             this.panelgen.Name = "panelgen";
             this.panelgen.Size = new System.Drawing.Size(314, 395);
             this.panelgen.TabIndex = 38;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(523, 303);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 23);
+            this.button2.TabIndex = 39;
+            this.button2.Text = "Añadir Imagen";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panelCHK);
             this.Controls.Add(this.panelmons2);
             this.Controls.Add(this.panelmonst);
@@ -496,5 +526,7 @@
         private System.Windows.Forms.Panel panelmons2;
         private System.Windows.Forms.Panel panelCHK;
         private System.Windows.Forms.Panel panelgen;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button2;
     }
 }

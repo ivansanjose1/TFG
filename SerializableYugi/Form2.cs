@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.Remoting.Channels;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SerializableYugi
@@ -23,6 +15,7 @@ namespace SerializableYugi
         Monstruo monstruo = null;
         Magica magica = null;
         Trampa trampa = null;
+        string rutadeimagen = "";
         public Form2()
         {
             InitializeComponent();
@@ -38,11 +31,13 @@ namespace SerializableYugi
                 panelmons2.Visible = false;
                 panelmonst.Visible = false;
             }
-            else {
+            else
+            {
                 panelmons2.Visible = true;
                 panelmonst.Visible = true;
             }
-            foreach (CheckBox ch in panelCHK.Controls) {
+            foreach (CheckBox ch in panelCHK.Controls)
+            {
                 if (!ch.Checked) ch.Enabled = false;
                 else almostdone = true;
             }
@@ -54,16 +49,24 @@ namespace SerializableYugi
                 }
                 panelgen.Enabled = false;
                 panelmonst.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = false;
             }
-            else {
+            else
+            {
                 panelmonst.Enabled = true;
-                panelgen.Enabled = true;   
-                 }
+                panelgen.Enabled = true;
+                button1.Enabled = true;
+                button2.Enabled = true;
+            }
+
         }//METODO CHECKED CHANGE
 
-        private void RellenarTipos(object sender) {
+        private void RellenarTipos(object sender)
+        {
             tipo.Items.Clear();
-            switch (int.Parse((string)(sender as Control).Tag)) {
+            switch (int.Parse((string)(sender as Control).Tag))
+            {
                 case 1: tipo.Items.AddRange(tipomons); break;
                 case 2: tipo.Items.AddRange(tipomags); break;
                 case 3: tipo.Items.AddRange(tipotraps); break;
@@ -87,13 +90,15 @@ namespace SerializableYugi
                 int.Parse(attk.Text.Trim()),
                 int.Parse(def.Text.Trim()),
                 int.Parse(niivel.Text.Trim()),
-                int.Parse(copias.Text.Trim())
-                ) ;
+                int.Parse(copias.Text.Trim()),
+                rutadeimagen
+                );
             bf.Serialize(fs, monstruo);
             fs.Close();
         }
 
-        private void RellenarMagica() {
+        private void RellenarMagica()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Append);
             BinaryFormatter bf = new BinaryFormatter();
             magica = new Magica(
@@ -103,13 +108,15 @@ namespace SerializableYugi
                 rareza.Text,
                 set.Text,
                 soporte.Text,
-                int.Parse(copias.Text.Trim())
+                int.Parse(copias.Text.Trim()),
+                rutadeimagen
                 );
-                bf.Serialize(fs, magica);
+            bf.Serialize(fs, magica);
             fs.Close();
         }
 
-        private void RellenarTrampa() {
+        private void RellenarTrampa()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Append);
             BinaryFormatter bf = new BinaryFormatter();
             trampa = new Trampa(
@@ -119,7 +126,8 @@ namespace SerializableYugi
                 rareza.Text,
                 set.Text,
                 soporte.Text,
-                int.Parse(copias.Text.Trim())
+                int.Parse(copias.Text.Trim()),
+                rutadeimagen
                 );
             bf.Serialize(fs, trampa);
             fs.Close();
@@ -127,15 +135,17 @@ namespace SerializableYugi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (archivo) {
+            switch (archivo)
+            {
                 case "Monstruos": RellenarMonstruo(); break;
-                case "Magicas":   RellenarMagica();break;
-                case "Trampas":   RellenarTrampa();break;
+                case "Magicas": RellenarMagica(); break;
+                case "Trampas": RellenarTrampa(); break;
             }
-            foreach (Control c in panelgen.Controls) {
+            foreach (Control c in panelgen.Controls)
+            {
                 c.Text = "";
             }
-            foreach(Control c in panelmonst.Controls)
+            foreach (Control c in panelmonst.Controls)
             {
                 c.Text = "";
             }
@@ -145,6 +155,22 @@ namespace SerializableYugi
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            rutadeimagen = openFileDialog1.FileName;
+        }
+
+        private void copias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar)) e.Handled = true;
+        }
+
+        private void tipo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
-    
+
 }

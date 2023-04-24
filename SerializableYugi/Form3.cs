@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SerializableYugi
@@ -36,7 +28,8 @@ namespace SerializableYugi
         {
             panel1.Enabled = true;
             tipo.Items.Clear();
-            switch ((sender as RadioButton).Name) {
+            switch ((sender as RadioButton).Name)
+            {
                 case "Monstruos": HabilitarMonstruos(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipomons); break;
                 case "Magicas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipomags); break;
                 case "Trampas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipotraps); break;
@@ -48,13 +41,16 @@ namespace SerializableYugi
 
         }
 
-        private void HabilitarMonstruos() {
-            foreach (Control ct in panel1.Controls) {
+        private void HabilitarMonstruos()
+        {
+            foreach (Control ct in panel1.Controls)
+            {
                 ct.Enabled = true;
             }
         }
 
-        private void HabilitarMagicasYTrampas() {
+        private void HabilitarMagicasYTrampas()
+        {
             nombre.Enabled = true;
             descripcion.Enabled = true;
             soporte.Enabled = true;
@@ -67,7 +63,8 @@ namespace SerializableYugi
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            switch (modo) {
+            switch (modo)
+            {
                 case 1: Buscar_PorTipo(); break;
                 case 2: BuscarPorNombre(); break;
                 case 3: BuscarEnDescripcion(); break;
@@ -79,7 +76,8 @@ namespace SerializableYugi
 
         }
 
-        private void Buscar_PorTipo() {
+        private void Buscar_PorTipo()
+        {
             switch (archivo)
             {
                 case "Monstruos": RellenarListaMonstruos(); break;
@@ -87,7 +85,8 @@ namespace SerializableYugi
                 case "Trampas": RellenarListaTrampas(); break;
             }//SWITCH
         }//BUSCARPORTIPO
-        private void RellenarListaMonstruos() {
+        private void RellenarListaMonstruos()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             while (fs.Position < fs.Length)
@@ -98,7 +97,8 @@ namespace SerializableYugi
             fs.Close();
         }//RELLENAR
 
-        private void RellenarListaMagicas() {
+        private void RellenarListaMagicas()
+        {
             try
             {
                 FileStream fs = new FileStream(archivo, FileMode.Open);
@@ -113,7 +113,8 @@ namespace SerializableYugi
             catch (Exception) { MessageBox.Show("No tienes una lista de para esta opcion"); }
         }//RELLENARMAGS
 
-        private void RellenarListaTrampas() {
+        private void RellenarListaTrampas()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             while (fs.Position < fs.Length)
@@ -124,10 +125,12 @@ namespace SerializableYugi
             fs.Close();
         }
 
-        private void BuscarPorNombre() {
+        private void BuscarPorNombre()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo) {
+            switch (archivo)
+            {
                 case "Magicas":
 
                     while (fs.Position < fs.Length)
@@ -155,18 +158,21 @@ namespace SerializableYugi
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-                switch (archivo) {
-                    case "Monstruos": MostrarCarta((Monstruo)listBox1.SelectedItem, null, null); break;
-                    case "Magicas": MostrarCarta(null, (Magica)listBox1.SelectedItem, null); break;
-                    case "Trampas": MostrarCarta(null, null, (Trampa)listBox1.SelectedItem); break;
-                }//SWITCH
+            switch (archivo)
+            {
+                case "Monstruos": MostrarCarta((Monstruo)listBox1.SelectedItem, null, null); break;
+                case "Magicas": MostrarCarta(null, (Magica)listBox1.SelectedItem, null); break;
+                case "Trampas": MostrarCarta(null, null, (Trampa)listBox1.SelectedItem); break;
+            }//SWITCH
         }
 
-        public void LimpiarTexto(object sender) {
+        public void LimpiarTexto(object sender)
+        {
             if (sender.GetType().Equals(nombre.GetType())) (sender as TextBox).Clear();
         }
 
-        private void BuscarArquetipo() {
+        private void BuscarArquetipo()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             switch (archivo)
@@ -200,7 +206,8 @@ namespace SerializableYugi
             modo = int.Parse((sender as Control).Tag.ToString());
         }
 
-        private void BuscarEnDescripcion() {
+        private void BuscarEnDescripcion()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             switch (archivo)
@@ -228,7 +235,8 @@ namespace SerializableYugi
             fs.Close();
         }//BUSCAR EN DESCRIPCION
 
-        private void BuscarporSubtipo() {
+        private void BuscarporSubtipo()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             while (fs.Position < fs.Length)
@@ -239,7 +247,8 @@ namespace SerializableYugi
             fs.Close();
         }
 
-        private void BuscarporExtraDeck() {
+        private void BuscarporExtraDeck()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             while (fs.Position < fs.Length)
@@ -250,7 +259,8 @@ namespace SerializableYugi
             fs.Close();
         }
 
-        private void BuscarPorNivel() {
+        private void BuscarPorNivel()
+        {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             while (fs.Position < fs.Length)
@@ -266,7 +276,8 @@ namespace SerializableYugi
 
         }
 
-        private void MostrarCarta(Monstruo m, Magica ma, Trampa t) {
+        private void MostrarCarta(Monstruo m, Magica ma, Trampa t)
+        {
 
             Carta cr = null;
             try
@@ -274,21 +285,22 @@ namespace SerializableYugi
                 switch (archivo)
                 {
                     case "Monstruos":
-                        cr = new Carta(m.get_nombre(), m.getDescripcion(), " " + m.get_atk(), " " + m.get_def(), m.get_tipo(), m.get_atributo(), m.get_set());
+                        cr = new Carta(m.get_nombre(), m.getDescripcion(), " " + m.get_atk(), " " + m.get_def(), m.get_tipo(), m.get_atributo(), m.get_set(), m.get_ruta());
                         break;
                     case "Magicas":
-                        cr = new Carta(ma.get_nombre(), ma.get_tipo(), ma.getDescripcion(), ma.get_rareza());
+                        cr = new Carta(ma.get_nombre(), ma.get_tipo(), ma.getDescripcion(), ma.get_rareza(), ma.get_ruta());
                         break;
                     case "Trampas":
-                        cr = new Carta(t.get_nombre(), t.get_tipo(), t.getDescripcion(), t.get_rareza());
+                        cr = new Carta(t.get_nombre(), t.get_tipo(), t.getDescripcion(), t.get_rareza(), t.get_ruta());
                         break;
 
                 }//SWITCH
                 cr.ShowDialog();
             }
-            catch (Exception ex) { }             
-               
-            }
+            catch (Exception ex) { }
+
         }
+
+    }
 }
 

@@ -228,6 +228,7 @@
             this.Controls.Add(this.Magicas);
             this.Controls.Add(this.Monstruos);
             this.Controls.Add(this.listBox1);
+            this.MaximizeBox = false;
             this.Name = "Form3";
             this.Text = "Consultar Cartas";
             this.Load += new System.EventHandler(this.Form3_Load);
