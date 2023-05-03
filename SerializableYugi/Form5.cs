@@ -18,7 +18,6 @@ namespace SerializableYugi
             tipomons.Visible = true;
             panel2.Visible = true;
             ilustracion.ImageLocation = iiruta;
-            //nombre.Font = new System.Drawing.Font(Fuente.FuenteYugi().Families[0], 16, FontStyle.Regular);
             switch (iiatributo)
             {
                 case "Luz": atributo.Image = Properties.Resources.LIGHT; break;
@@ -44,7 +43,9 @@ namespace SerializableYugi
 
         private void Carta_Load(object sender, EventArgs e)
         {
-
+            Fuente.CargarFuente();
+            Fuente.LocalizarFuente(this.nombre, 10);
+            Fuente.LocalizarFuente(this.descripcion, 7);
         }
     }
 }

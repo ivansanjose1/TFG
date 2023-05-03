@@ -29,4 +29,3 @@ C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\Serializ
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.application
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.exe.manifest
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.application
-C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\FONT\ygofont.ttf

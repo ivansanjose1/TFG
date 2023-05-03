@@ -61,6 +61,16 @@ namespace SerializableYugi.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon amanecer {
+            get {
+                object obj = ResourceManager.GetObject("amanecer", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DARK {
@@ -131,6 +141,16 @@ namespace SerializableYugi.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] StoneSerifSemibold {
+            get {
+                object obj = ResourceManager.GetObject("StoneSerifSemibold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap WATER {
@@ -147,16 +167,6 @@ namespace SerializableYugi.Properties {
             get {
                 object obj = ResourceManager.GetObject("WIND", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] ygofont {
-            get {
-                object obj = ResourceManager.GetObject("ygofont", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }
