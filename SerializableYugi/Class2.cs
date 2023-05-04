@@ -32,9 +32,5 @@ namespace SerializableYugi
         public static void LocalizarFuente(System.Windows.Forms.Control c, float tamanho) {
             c.Font = new Font(ff, tamanho, FontStyle.Regular);
         }
-
-        public static Font DevolverFuentecita() {
-            return DevolverFuentecita();
-        }
     }//CLASS
 }

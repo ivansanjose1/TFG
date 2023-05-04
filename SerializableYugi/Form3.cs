@@ -24,6 +24,7 @@ namespace SerializableYugi
         Trampa trampa = null;
         string archivo = null;
         int modo;
+        string archivonoexiste = "Aun no tienes un archivo de ";
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             panel1.Enabled = true;
@@ -91,14 +92,17 @@ namespace SerializableYugi
         }//BUSCARPORTIPO
         private void RellenarListaMonstruos()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-            }
-            fs.Close();
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                }
+                fs.Close();
+            }catch(FileNotFoundException) { MessageBox.Show(archivonoexiste+archivo); }
         }//RELLENAR
 
         private void RellenarListaMagicas()
@@ -114,51 +118,58 @@ namespace SerializableYugi
                 }
                 fs.Close();
             }
-            catch (Exception) { MessageBox.Show("No tienes una lista de para esta opcion"); }
+            catch (Exception) { MessageBox.Show(archivonoexiste + archivo); }
         }//RELLENARMAGS
 
         private void RellenarListaTrampas()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                trampa = (Trampa)bf.Deserialize(fs);
-                if (trampa.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(trampa);
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    trampa = (Trampa)bf.Deserialize(fs);
+                    if (trampa.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(trampa);
+                }
+                fs.Close();
             }
-            fs.Close();
+            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
         }
 
         private void BuscarPorNombre()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo)
+            try
             {
-                case "Magicas":
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                switch (archivo)
+                {
+                    case "Magicas":
 
-                    while (fs.Position < fs.Length)
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
-                    }; break;
-                case "Monstruos":
-                    while (fs.Position < fs.Length)
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(mons);
-                    }; break;
-                case "Trampas":
-                    while (fs.Position < fs.Length)
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(trampa);
-                    }; break;
-            }//SWITCH
+                        while (fs.Position < fs.Length)
+                        {
+                            magica = (Magica)bf.Deserialize(fs);
+                            if (magica.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
 
-            fs.Close();
-
-        }
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MessageBox.Show(""); }
+            }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -179,28 +190,31 @@ namespace SerializableYugi
         {
             FileStream fs = new FileStream(archivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo)
+            try
             {
-                case "Magicas":
-                    while (fs.Position < fs.Length)
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
-                    }; break;
-                case "Monstruos":
-                    while (fs.Position < fs.Length)
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
-                    }; break;
-                case "Trampas":
-                    while (fs.Position < fs.Length)
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
-                    }; break;
-            }//SWITCH
-
+                switch (archivo)
+                {
+                    case "Magicas":
+                        while (fs.Position < fs.Length)
+                        {
+                            magica = (Magica)bf.Deserialize(fs);
+                            if (magica.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+            }
+            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
             fs.Close();
         }
 
@@ -212,67 +226,83 @@ namespace SerializableYugi
 
         private void BuscarEnDescripcion()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo)
+            try
             {
-                case "Magicas":
-                    while (fs.Position < fs.Length)
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
-                    }; break;
-                case "Monstruos":
-                    while (fs.Position < fs.Length)
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
-                    }; break;
-                case "Trampas":
-                    while (fs.Position < fs.Length)
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(trampa);
-                    }; break;
-            }//SWITCH
-
-            fs.Close();
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                switch (archivo)
+                {
+                    case "Magicas":
+                        while (fs.Position < fs.Length)
+                        {
+                            magica = (Magica)bf.Deserialize(fs);
+                            if (magica.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }          
         }//BUSCAR EN DESCRIPCION
 
         private void BuscarporSubtipo()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.getSubtipo().Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-            };
-            fs.Close();
+
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.getSubtipo().Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                };
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
         }
 
         private void BuscarporExtraDeck()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.getExtraDeck().Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-            };
-            fs.Close();
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.getExtraDeck().Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                };
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
         }
 
         private void BuscarPorNivel()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.getNivel().Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
-            };
-            fs.Close();
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.getNivel().Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
+                };
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
         }
 
         private void button2_Click(object sender, EventArgs e)//ESTE BOTON ES EL DE LA ACTUALIZACION

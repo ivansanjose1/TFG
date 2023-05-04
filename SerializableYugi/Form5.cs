@@ -44,7 +44,7 @@ namespace SerializableYugi
         private void Carta_Load(object sender, EventArgs e)
         {
             Fuente.CargarFuente();
-            Fuente.LocalizarFuente(this.nombre, 10);
+            Fuente.LocalizarFuente(this.nombre, 8);
             Fuente.LocalizarFuente(this.descripcion, 7);
         }
     }
