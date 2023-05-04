@@ -8,9 +8,6 @@ namespace SerializableYugi
     public partial class Form2 : Form
     {
         ArrayList<Monstruo> monstruos = new ArrayList<Monstruo>();
-        string[] tipomons = { "Guerrero", "Demonio", "Lanzador de Conjuros", "Máquina", "Bestia", "Bestia Alada", "Guerrero-Bestia", "Pez", "Serpiente Marina", "Aqua", "Reptil", "Dinosaurio", "Dragón", "Hada", "Zombi", "Roca", "Psíquico", "Piro", "Trueno", "Planta", "Insecto", "Wyrm", "Bestia Divina", "Ciberso" };
-        string[] tipomags = { "Normal", "Juego Rápido", "Continua", "Equipo", "Campo", "Ritual" };
-        string[] tipotraps = { "Normal", "Continua", "Contraefecto" };
         string archivo = null;
         Monstruo monstruo = null;
         Magica magica = null;
@@ -67,9 +64,9 @@ namespace SerializableYugi
             tipo.Items.Clear();
             switch (int.Parse((string)(sender as Control).Tag))
             {
-                case 1: tipo.Items.AddRange(tipomons); break;
-                case 2: tipo.Items.AddRange(tipomags); break;
-                case 3: tipo.Items.AddRange(tipotraps); break;
+                case 1: tipo.Items.AddRange(Formulario.get_tipomons()); break;
+                case 2: tipo.Items.AddRange(Formulario.get_tipomags()); break;
+                case 3: tipo.Items.AddRange(Formulario.get_tipotraps()); break;
             }
         }
         private void RellenarMonstruo()
@@ -153,7 +150,14 @@ namespace SerializableYugi
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            Fuente.CargarFuente();
+            Fuente.LocalizarFuente(panelCHK, 8);
+            Fuente.LocalizarFuente(paneletiquetas1, 8);
+            Fuente.LocalizarFuente(panelgen, 8);
+            Fuente.LocalizarFuente(panelmonst, 8);
+            Fuente.LocalizarFuente(panelmons2, 8);
+            Fuente.LocalizarFuente(button1, 8);
+            Fuente.LocalizarFuente(button2, 8);
         }
 
         private void button2_Click(object sender, EventArgs e)

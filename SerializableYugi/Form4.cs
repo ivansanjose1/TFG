@@ -13,9 +13,6 @@ namespace SerializableYugi
         {
             InitializeComponent();
         }
-        string[] tipomons = { "Guerrero", "Demonio", "Lanzador de Conjuros", "Máquina", "Bestia", "Bestia Alada", "Guerrero-Bestia", "Pez", "Serpiente Marina", "Aqua", "Reptil", "Dinosaurio", "Dragón", "Hada", "Zombi", "Roca", "Psíquico", "Piro", "Trueno", "Planta", "Insecto", "Wyrm", "Bestia Divina", "Ciberso" };
-        string[] tipomags = { "Normal", "Juego Rápido", "Continua", "Equipo", "Campo", "Ritual" };
-        string[] tipotraps = { "Normal", "Continua", "Contraefecto" };
         string archivo = null;
         Monstruo mons = null;
         Magica magica = null;
@@ -31,9 +28,9 @@ namespace SerializableYugi
             tipo.Items.Clear();
             switch (int.Parse((string)(sender as Control).Tag))
             {
-                case 1: tipo.Items.AddRange(tipomons); archivo = "Monstruos"; break;
-                case 2: tipo.Items.AddRange(tipomags); archivo = "Magicas"; break;
-                case 3: tipo.Items.AddRange(tipotraps); archivo = "Trampas"; break;
+                case 1: tipo.Items.AddRange(Formulario.get_tipomons()); archivo = "Monstruos"; break;
+                case 2: tipo.Items.AddRange(Formulario.get_tipomags()); archivo = "Magicas"; break;
+                case 3: tipo.Items.AddRange(Formulario.get_tipotraps()); archivo = "Trampas"; break;
             }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -137,7 +134,6 @@ namespace SerializableYugi
                             set.Text = trampa.get_rareza();
                             copias.Text = "" + trampa.get_copias();
                         }
-                        // else bf.Serialize(fs, trampa);
                     }; break;
             }//SWITCH
             fs.Close();

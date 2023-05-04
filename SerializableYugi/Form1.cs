@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SerializableYugi
@@ -26,6 +27,14 @@ namespace SerializableYugi
         {
             Form4 fr4 = new Form4();
             fr4.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Fuente.CargarFuente();
+            Fuente.LocalizarFuente(this.button1, 20);
+            Fuente.LocalizarFuente(this.button2, 20);
+            Fuente.LocalizarFuente(this.button3, 20);
         }
     }
 }

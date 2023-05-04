@@ -13,9 +13,6 @@ namespace SerializableYugi
             InitializeComponent();
             this.modo = iimodo;
         }
-        string[] tipomons = { "Guerrero", "Demonio", "Lanzador de Conjuros", "Máquina", "Bestia", "Bestia Alada", "Guerrero-Bestia", "Pez", "Serpiente Marina", "Aqua", "Reptil", "Dinosaurio", "Dragón", "Hada", "Zombi", "Roca", "Psíquico", "Piro", "Trueno", "Planta", "Insecto", "Wyrm", "Bestia Divina", "Ciberso" };
-        string[] tipomags = { "Normal", "Juego Rápido", "Continua", "Equipo", "Campo", "Ritual" };
-        string[] tipotraps = { "Normal", "Continua", "Contraefecto" };
         List<Monstruo> listmons = new List<Monstruo>();
         List<Magica> listmagicas = new List<Magica>();
         List<Trampa> listrampa = new List<Trampa>();
@@ -31,9 +28,9 @@ namespace SerializableYugi
             tipo.Items.Clear();
             switch ((sender as RadioButton).Name)
             {
-                case "Monstruos": HabilitarMonstruos(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipomons); break;
-                case "Magicas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipomags); break;
-                case "Trampas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipotraps); break;
+                case "Monstruos": HabilitarMonstruos(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(Formulario.get_tipomons()); break;
+                case "Magicas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(Formulario.get_tipomags()); break;
+                case "Trampas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(Formulario.get_tipotraps()); break;
             }
 
         }
@@ -44,6 +41,10 @@ namespace SerializableYugi
                 Fuente.LocalizarFuente(c, 8);
             }
             Fuente.LocalizarFuente(listBox1, 9);
+            Fuente.LocalizarFuente(Monstruos, 8);
+            Fuente.LocalizarFuente(Magicas, 8);
+            Fuente.LocalizarFuente(Trampas,8);
+            Fuente.LocalizarFuente(button1, 8);
         }
 
         private void HabilitarMonstruos()
@@ -83,60 +84,38 @@ namespace SerializableYugi
 
         private void Buscar_PorTipo()
         {
-            switch (archivo)
+            try
             {
-                case "Monstruos": RellenarListaMonstruos(); break;
-                case "Magicas": RellenarListaMagicas(); break;
-                case "Trampas": RellenarListaTrampas(); break;
-            }//SWITCH
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                switch (archivo)
+                {
+                    case "Magicas":
+
+                        while (fs.Position < fs.Length)
+                        {
+                            magica = (Magica)bf.Deserialize(fs);
+                            if (magica.get_tipo().ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.get_tipo().ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.get_tipo().ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }//BUSCARPORTIPO
-        private void RellenarListaMonstruos()
-        {
-            try
-            {
-                FileStream fs = new FileStream(archivo, FileMode.Open);
-                BinaryFormatter bf = new BinaryFormatter();
-                while (fs.Position < fs.Length)
-                {
-                    mons = (Monstruo)bf.Deserialize(fs);
-                    if (mons.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-                }
-                fs.Close();
-            }catch(FileNotFoundException) { MessageBox.Show(archivonoexiste+archivo); }
-        }//RELLENAR
-
-        private void RellenarListaMagicas()
-        {
-            try
-            {
-                FileStream fs = new FileStream(archivo, FileMode.Open);
-                BinaryFormatter bf = new BinaryFormatter();
-                while (fs.Position < fs.Length)
-                {
-                    magica = (Magica)bf.Deserialize(fs);
-                    if (magica.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(magica);
-                }
-                fs.Close();
-            }
-            catch (Exception) { MessageBox.Show(archivonoexiste + archivo); }
-        }//RELLENARMAGS
-
-        private void RellenarListaTrampas()
-        {
-            try
-            {
-                FileStream fs = new FileStream(archivo, FileMode.Open);
-                BinaryFormatter bf = new BinaryFormatter();
-                while (fs.Position < fs.Length)
-                {
-                    trampa = (Trampa)bf.Deserialize(fs);
-                    if (trampa.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(trampa);
-                }
-                fs.Close();
-            }
-            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
-        }
-
+       
         private void BuscarPorNombre()
         {
             try
@@ -168,7 +147,7 @@ namespace SerializableYugi
 
                 fs.Close();
             }
-            catch (FileNotFoundException) { MessageBox.Show(""); }
+            catch (FileNotFoundException) { MensajeNotFound(); }
             }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -214,7 +193,7 @@ namespace SerializableYugi
                         }; break;
                 }//SWITCH
             }
-            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
+            catch (FileNotFoundException) { MensajeNotFound(); }
             fs.Close();
         }
 
@@ -253,7 +232,7 @@ namespace SerializableYugi
                 }//SWITCH
                 fs.Close();
             }
-            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }          
+            catch (FileNotFoundException) { MensajeNotFound(); }          
         }//BUSCAR EN DESCRIPCION
 
         private void BuscarporSubtipo()
@@ -270,7 +249,7 @@ namespace SerializableYugi
                 };
                 fs.Close();
             }
-            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }
 
         private void BuscarporExtraDeck()
@@ -286,7 +265,7 @@ namespace SerializableYugi
                 };
                 fs.Close();
             }
-            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }
 
         private void BuscarPorNivel()
@@ -302,7 +281,7 @@ namespace SerializableYugi
                 };
                 fs.Close();
             }
-            catch (FileNotFoundException) { MessageBox.Show(archivonoexiste + archivo); }
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }
 
         private void button2_Click(object sender, EventArgs e)//ESTE BOTON ES EL DE LA ACTUALIZACION
@@ -335,6 +314,9 @@ namespace SerializableYugi
 
         }
 
+        private void MensajeNotFound() {
+            MessageBox.Show(archivonoexiste + archivo);
+        }
     }
 }
 
