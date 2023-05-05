@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace SerializableYugi
@@ -31,6 +30,7 @@ namespace SerializableYugi
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.OBELISKPIXELART;
             Fuente.CargarFuente();
             Fuente.LocalizarFuente(this.button1, 20);
             Fuente.LocalizarFuente(this.button2, 20);

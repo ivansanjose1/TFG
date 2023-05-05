@@ -154,7 +154,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 48);
+            this.label2.Location = new System.Drawing.Point(3, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 13;
@@ -317,7 +317,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(625, 303);
+            this.button1.Location = new System.Drawing.Point(523, 303);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 29;
@@ -448,9 +448,9 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(523, 303);
+            this.button2.Location = new System.Drawing.Point(604, 303);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 23);
+            this.button2.Size = new System.Drawing.Size(160, 23);
             this.button2.TabIndex = 39;
             this.button2.Text = "Añadir Imagen";
             this.button2.UseVisualStyleBackColor = true;

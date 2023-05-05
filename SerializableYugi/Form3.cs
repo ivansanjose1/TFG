@@ -37,13 +37,14 @@ namespace SerializableYugi
         private void Form3_Load(object sender, EventArgs e)
         {
             Fuente.CargarFuente();
-            foreach (Control c in panel1.Controls){
+            foreach (Control c in panel1.Controls)
+            {
                 Fuente.LocalizarFuente(c, 8);
             }
             Fuente.LocalizarFuente(listBox1, 9);
             Fuente.LocalizarFuente(Monstruos, 8);
             Fuente.LocalizarFuente(Magicas, 8);
-            Fuente.LocalizarFuente(Trampas,8);
+            Fuente.LocalizarFuente(Trampas, 8);
             Fuente.LocalizarFuente(button1, 8);
         }
 
@@ -79,7 +80,7 @@ namespace SerializableYugi
                 case 6: BuscarporExtraDeck(); break;
                 case 7: BuscarPorNivel(); break;
             }
-
+            ReestablecerTextos();
         }
 
         private void Buscar_PorTipo()
@@ -115,7 +116,7 @@ namespace SerializableYugi
             }
             catch (FileNotFoundException) { MensajeNotFound(); }
         }//BUSCARPORTIPO
-       
+
         private void BuscarPorNombre()
         {
             try
@@ -148,7 +149,7 @@ namespace SerializableYugi
                 fs.Close();
             }
             catch (FileNotFoundException) { MensajeNotFound(); }
-            }
+        }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -232,7 +233,7 @@ namespace SerializableYugi
                 }//SWITCH
                 fs.Close();
             }
-            catch (FileNotFoundException) { MensajeNotFound(); }          
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }//BUSCAR EN DESCRIPCION
 
         private void BuscarporSubtipo()
@@ -314,9 +315,27 @@ namespace SerializableYugi
 
         }
 
-        private void MensajeNotFound() {
+        private void MensajeNotFound()
+        {
             MessageBox.Show(archivonoexiste + archivo);
         }
+
+        private void nombre_Leave(object sender, EventArgs e)
+        {
+            if(!button1.Focused) { (sender as Control).Text = "Buscar por "+(sender as Control).Name; }
+        }
+
+        private void ReestablecerTextos() {
+            foreach (Control c in panel1.Controls) {
+                c.Text = "Buscar por " + c.Name;
+            }
+        }
+
+        private void extradeck_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
     }
 }
 

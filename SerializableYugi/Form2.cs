@@ -80,7 +80,7 @@ namespace SerializableYugi
                 atributo.Text,
                 subtipo.Text,
                 ExtraDeck.Text,
-                arquetipo.Text,
+                textBox10.Text,
                 rareza.Text,
                 set.Text,
                 soporte.Text,

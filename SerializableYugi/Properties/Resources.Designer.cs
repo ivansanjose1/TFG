@@ -61,16 +61,6 @@ namespace SerializableYugi.Properties {
         }
         
         /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
-        /// </summary>
-        internal static System.Drawing.Icon amanecer {
-            get {
-                object obj = ResourceManager.GetObject("amanecer", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DARK {
@@ -83,9 +73,9 @@ namespace SerializableYugi.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DEFAULT {
+        internal static System.Drawing.Bitmap DEFAULTerror {
             get {
-                object obj = ResourceManager.GetObject("DEFAULT", resourceCulture);
+                object obj = ResourceManager.GetObject("DEFAULTerror", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -127,6 +117,16 @@ namespace SerializableYugi.Properties {
             get {
                 object obj = ResourceManager.GetObject("LIGHT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon OBELISKPIXELART {
+            get {
+                object obj = ResourceManager.GetObject("OBELISKPIXELART", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

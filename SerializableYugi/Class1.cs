@@ -79,9 +79,9 @@ namespace SerializableYugi
             return descripcion;
         }
 
-        public string getArquetipo()
+        public string get_arquetipo()
         {
-            return soporte;
+            return arquetipo;
         }
 
         public string getSubtipo()
@@ -104,11 +104,7 @@ namespace SerializableYugi
             return atributo;
         }
 
-        public string get_arquetipo()
-        {
-            return arquetipo;
-        }
-
+ 
         public int get_atk()
         {
             return atk;

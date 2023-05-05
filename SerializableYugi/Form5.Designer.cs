@@ -118,7 +118,9 @@
             // ilustracion
             // 
             this.ilustracion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ilustracion.Image = global::SerializableYugi.Properties.Resources.DEFAULT;
+            this.ilustracion.ErrorImage = global::SerializableYugi.Properties.Resources.DEFAULTerror;
+            this.ilustracion.Image = global::SerializableYugi.Properties.Resources.DEFAULTerror;
+            this.ilustracion.InitialImage = global::SerializableYugi.Properties.Resources.DEFAULTerror;
             this.ilustracion.Location = new System.Drawing.Point(35, 70);
             this.ilustracion.Name = "ilustracion";
             this.ilustracion.Size = new System.Drawing.Size(219, 198);

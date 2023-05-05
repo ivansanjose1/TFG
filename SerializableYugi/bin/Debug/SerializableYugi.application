@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SerializableYugi.exe.manifest" size="7230">
+    <dependentAssembly dependencyType="install" codebase="SerializableYugi.exe.manifest" size="7240">
       <assemblyIdentity name="SerializableYugi.exe" version="1.0.0.6" publicKeyToken="0000000000000000" language="es-VE" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>e1DaDcVuAkPqgAOqh+pNihCDgyEv6ZwwU6vA1CM9YUg=</dsig:DigestValue>
+        <dsig:DigestValue>s4lJLg/xb007BYbr+7nJJoOdGkj88aALw2ERbw7tdV4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

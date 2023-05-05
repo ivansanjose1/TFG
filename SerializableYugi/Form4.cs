@@ -113,7 +113,7 @@ namespace SerializableYugi
                             def.Text = mons.get_def() + "";
                             ExtraDeck.Text = mons.getExtraDeck();
                             subtipo.Text = mons.getSubtipo();
-                            textBox10.Text = mons.getArquetipo();
+                            arquetipo.Text = mons.get_arquetipo();
                             niivel.Text = mons.getNivel() + "";
 
                         }
@@ -124,7 +124,7 @@ namespace SerializableYugi
                     while ((fs.Position < fs.Length))
                     {
                         trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.get_nombre().ToLower().Contains(codigobusc.ToLower()))
+                        if (trampa.get_rareza().ToLower().Contains(codigobusc.ToLower()))
                         {
                             Nombre.Text = trampa.get_nombre();
                             Descripcion.Text = trampa.getDescripcion();
@@ -134,6 +134,7 @@ namespace SerializableYugi
                             set.Text = trampa.get_rareza();
                             copias.Text = "" + trampa.get_copias();
                         }
+                        else OmitirActualizado(null, null, trampa);
                     }; break;
             }//SWITCH
             fs.Close();
@@ -185,7 +186,7 @@ namespace SerializableYugi
                     atributo.Text,
                     subtipo.Text,
                     ExtraDeck.Text,
-                    textBox10.Text,
+                    arquetipo.Text,
                     rareza.Text,
                     set.Text,
                     soporte.Text,
@@ -293,6 +294,38 @@ namespace SerializableYugi
         private void tipo_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            Fuente.CargarFuente();
+            Fuente.LocalizarFuente(button1, 8);
+            Fuente.LocalizarFuente(button2, 8);
+            Fuente.LocalizarFuente(button3, 8);
+            Fuente.LocalizarFuente(buscada, 8);
+            foreach (Control c in paneletiquetas1.Controls) {
+                Fuente.LocalizarFuente(c, 8);
+            }
+            foreach (Control c in paneletiquetas2.Controls) {
+                Fuente.LocalizarFuente(c, 8);
+            }
+
+            foreach (Control c in panelCHK.Controls) {
+                Fuente.LocalizarFuente(c, 8);
+            }
+            foreach (Control c in panelgen.Controls) {
+                Fuente.LocalizarFuente(c, 8);
+            }
+
+            foreach (Control c in panelmonst.Controls)
+            {
+                Fuente.LocalizarFuente(c, 8);
+            } 
+        }
+
+        private void Nombre_Click(object sender, EventArgs e)
+        {
+            (sender as TextBox).ReadOnly = false;
         }
     }
 }

@@ -11,9 +11,6 @@ C:\Users\Ygnacio\source\repos\SerializableYugi\SerializableYugi\obj\Debug\Serial
 C:\Users\Ygnacio\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.exe
 C:\Users\Ygnacio\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.pdb
 C:\Users\Ygnacio\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.Form3.resources
-C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.exe.config
-C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.exe
-C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.pdb
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.csproj.AssemblyReference.cache
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.Form1.resources
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.Form2.resources
@@ -23,9 +20,12 @@ C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\Serializ
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.Properties.Resources.resources
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.csproj.GenerateResource.cache
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.csproj.CoreCompileInputs.cache
-C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.exe
-C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.pdb
+C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.exe.config
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.exe.manifest
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.application
+C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.exe
+C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\bin\Debug\SerializableYugi.pdb
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.exe.manifest
 C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.application
+C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.exe
+C:\Users\ygofe\source\repos\SerializableYugi\SerializableYugi\obj\Debug\SerializableYugi.pdb

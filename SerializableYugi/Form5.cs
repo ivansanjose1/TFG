@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace SerializableYugi
@@ -45,7 +44,12 @@ namespace SerializableYugi
         {
             Fuente.CargarFuente();
             Fuente.LocalizarFuente(this.nombre, 8);
-            Fuente.LocalizarFuente(this.descripcion, 7);
+            Fuente.LocalizarFuente(this.descripcion, 8);
+            Fuente.LocalizarFuente(atk, 8);
+            Fuente.LocalizarFuente(def, 8);
+            Fuente.LocalizarFuente(set, 8);
+            Fuente.LocalizarFuente(tipomons, 6);
+            Fuente.LocalizarFuente(tipo, 8);
         }
     }
 }

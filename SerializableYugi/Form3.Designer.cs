@@ -63,6 +63,7 @@
             this.nombre.Tag = "2";
             this.nombre.Text = "Buscar por nombre";
             this.nombre.Enter += new System.EventHandler(this.nombre_Enter);
+            this.nombre.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // descripcion
             // 
@@ -74,6 +75,7 @@
             this.descripcion.Tag = "3";
             this.descripcion.Text = "Buscar en la descripcion";
             this.descripcion.Enter += new System.EventHandler(this.nombre_Enter);
+            this.descripcion.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // soporte
             // 
@@ -84,6 +86,7 @@
             this.soporte.Tag = "4";
             this.soporte.Text = "Buscar por soporte";
             this.soporte.Enter += new System.EventHandler(this.nombre_Enter);
+            this.soporte.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // Monstruos
             // 
@@ -170,6 +173,8 @@
             this.tipo.Tag = "1";
             this.tipo.Text = "Buscar por tipo";
             this.tipo.Enter += new System.EventHandler(this.nombre_Enter);
+            this.tipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.extradeck_KeyPress);
+            this.tipo.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // subtipo
             // 
@@ -189,6 +194,8 @@
             this.subtipo.Tag = "5";
             this.subtipo.Text = "Buscar por subtipo";
             this.subtipo.Enter += new System.EventHandler(this.nombre_Enter);
+            this.subtipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.extradeck_KeyPress);
+            this.subtipo.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // extradeck
             // 
@@ -206,6 +213,8 @@
             this.extradeck.Tag = "6";
             this.extradeck.Text = "Buscar por ExtraDeck";
             this.extradeck.Enter += new System.EventHandler(this.nombre_Enter);
+            this.extradeck.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.extradeck_KeyPress);
+            this.extradeck.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // button1
             // 

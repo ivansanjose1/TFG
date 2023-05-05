@@ -70,11 +70,10 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>ICONOS\amanecer.ico</ApplicationIcon>
+    <ApplicationIcon>ROMPECABEZASPIXELART.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -169,11 +168,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ICONOS\DEFAULT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ICONOS\amanecer.ico" />
+    <None Include="ICONOS\OBELISKPIXELART.ico" />
+    <Content Include="ROMPECABEZASPIXELART.ico" />
     <Content Include="ICONOS\DARK.png" />
+    <None Include="ICONOS\DEFAULTerror.png" />
     <Content Include="ICONOS\DIVINE.png" />
     <Content Include="ICONOS\EARTH.png" />
     <Content Include="ICONOS\FIRE.png" />
