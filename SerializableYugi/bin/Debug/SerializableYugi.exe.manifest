@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SerializableYugi.exe" size="1244096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SerializableYugi.exe" size="1245120">
       <assemblyIdentity name="SerializableYugi" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Ov7W4DaQxBMM5Lix/3Z0ZgDyf8Su65O5ZNrx8CRGR18=</dsig:DigestValue>
+        <dsig:DigestValue>l87W+2AJ8TshUZR5w57CLPfKGaGTe8YFEv1gRDXTt7U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

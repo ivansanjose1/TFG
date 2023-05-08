@@ -35,6 +35,7 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(this.button1, 20);
             Fuente.LocalizarFuente(this.button2, 20);
             Fuente.LocalizarFuente(this.button3, 20);
+            Fuente.LocalizarFuente(this.button4, 20);
         }
 
         private void button4_Click(object sender, EventArgs e)

@@ -32,44 +32,66 @@ namespace SerializableYugi
         {
             Monstrar_monstruos();
             Monstrar_magicas();
+            Monstrar_trampas();
+            Fuente.CargarFuente();
+            Fuente.LocalizarFuente(this.buttonEliminar, 8);
+            Fuente.LocalizarFuente(this.Anhadir, 8);
+            Fuente.LocalizarFuente(this.listBoxBaraja, 8);
+            Fuente.LocalizarFuente(this.Sugerencia, 8);
+            Fuente.LocalizarFuente(label1, 8);
+            Fuente.LocalizarFuente(listBoxMagia, 8);
+            Fuente.LocalizarFuente(listBoxMonstruos, 8);
+            Fuente.LocalizarFuente(listBoxTrampas, 8);
         }
 
         private void Monstrar_monstruos()
         {
-            FileStream fs = new FileStream("Monstruos", FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                monstruo = (Monstruo)bf.Deserialize(fs);
-                listBoxMonstruos.Items.Add(monstruo);
+                FileStream fs = new FileStream("Monstruos", FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    monstruo = (Monstruo)bf.Deserialize(fs);
+                    listBoxMonstruos.Items.Add(monstruo);
+                }
+                fs.Close();
             }
-            fs.Close();
+            catch (FileNotFoundException) { }
         }
 
         private void Monstrar_magicas()
         {
-            FileStream fs = new FileStream("Magicas", FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                magica = (Magica)bf.Deserialize(fs);
-                listBoxMagia.Items.Add(magica);
+                FileStream fs = new FileStream("Magicas", FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    magica = (Magica)bf.Deserialize(fs);
+                    listBoxMagia.Items.Add(magica);
 
+                }
+                fs.Close();
             }
-            fs.Close();
+            catch (FileNotFoundException) { }
         }
 
         private void Monstrar_trampas()
         {
-            FileStream fs = new FileStream("Trampas", FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+            try
             {
-                trampa = (Trampa)bf.Deserialize(fs);
-                listBoxTrampas.Items.Add(trampa);
+                FileStream fs = new FileStream("Trampas", FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    trampa = (Trampa)bf.Deserialize(fs);
+                    listBoxTrampas.Items.Add(trampa);
 
+                }
+                fs.Close();
             }
-            fs.Close();
+            catch (FileNotFoundException) { }
         }
 
         private void AnnnadirBaraja()
@@ -158,7 +180,7 @@ namespace SerializableYugi
 
                 if (iimonstruo.get_nombre().ToLower().Contains(monstruo.get_soporte().ToLower())&&monstruo.get_soporte()!=""&& monstruo.get_soporte().ToLower()!= "no")
                 {
-                    if (!ComprobarSugerencias(monstruo, null, 1)) Sugerencia.Items.Add(monstruo);
+                    if (!ComprobarSugerencias(monstruo, null, null, 1)) Sugerencia.Items.Add(monstruo);
                 }
 
             }
@@ -171,7 +193,7 @@ namespace SerializableYugi
                 magica = (Magica)bf.Deserialize(fsMagicas);
                 if (iimonstruo.get_nombre().ToLower().Contains(magica.get_soporte().ToLower()) && magica.get_soporte() != "" && magica.get_soporte().ToLower() != "no")
                 {
-                    if(!ComprobarSugerencias(null, magica, 2)) Sugerencia.Items.Add(magica);
+                    if(!ComprobarSugerencias(null, magica, null, 2)) Sugerencia.Items.Add(magica);
                 }
 
             }
@@ -185,7 +207,7 @@ namespace SerializableYugi
                     trampa = (Trampa)bf.Deserialize(fsTrampas);
                     if (trampa.get_soporte() == iimonstruo.get_arquetipo())
                     {
-                        Sugerencia.Items.Add(trampa);
+                        if (!ComprobarSugerencias(null, null, trampa, 3)) Sugerencia.Items.Add(trampa);
                     }
 
                 }
@@ -195,9 +217,6 @@ namespace SerializableYugi
 
 
         }
-
-
-
 
 
         private void listBoxBaraja_SelectedIndexChanged(object sender, EventArgs e)
@@ -210,7 +229,7 @@ namespace SerializableYugi
 
         }
 
-        private bool ComprobarSugerencias(Monstruo iimonstruo, Magica iimagica, int indicador) {
+        private bool ComprobarSugerencias(Monstruo iimonstruo, Magica iimagica, Trampa iitrampa, int indicador) {
             bool encontrado = false;
             switch (indicador) {
                 case 1:
@@ -227,6 +246,11 @@ namespace SerializableYugi
                     }
                     break;
 
+                case 3:
+                    for (int i = 0; i < Sugerencia.Items.Count; i++) {
+                        if (iitrampa.GetType() == Sugerencia.Items[i].GetType() && iitrampa.get_nombre() == (Sugerencia.Items[i] as Trampa).get_nombre()) encontrado = true;
+                    }
+                    break;
             }
             return encontrado;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ namespace SerializableYugi
         {
             InitializeComponent();
         }
+    
         string archivo = null;
         Monstruo mons = null;
         Magica magica = null;
@@ -23,6 +25,24 @@ namespace SerializableYugi
         List<Monstruo> monst = new List<Monstruo>();
         List<Trampa> tramp = new List<Trampa>();
         bool guardada = false;
+        public Form4(string codigo, int modo)
+        {
+            InitializeComponent();
+            switch (modo)
+            {
+                case 1:
+                    checkBox1.Checked = true;
+                    button1.Enabled = false;
+                    archivo = checkBox1.Text;
+                    buscada.Text = codigo;
+                    codigobusc = codigo;
+                    BuscarCartas();
+                    break;
+
+            }
+            
+
+        }
         private void RellenarTipos(object sender)
         {
             tipo.Items.Clear();

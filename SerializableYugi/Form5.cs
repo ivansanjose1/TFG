@@ -50,6 +50,14 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(set, 8);
             Fuente.LocalizarFuente(tipomons, 6);
             Fuente.LocalizarFuente(tipo, 8);
+            Fuente.LocalizarFuente(editar, 8);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form4 fr4 = new Form4(this.set.Text, 1);
+            fr4.Show();
+            this.Close();
         }
     }
 }
