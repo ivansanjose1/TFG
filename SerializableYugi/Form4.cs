@@ -38,6 +38,15 @@ namespace SerializableYugi
                     codigobusc = codigo;
                     BuscarCartas();
                     break;
+                case 2:
+                    checkBox2.Checked = true;
+                    button1.Enabled = false;
+                    archivo = checkBox2.Text;
+                    buscada.Text = codigo;
+                    codigobusc = codigo;
+                    BuscarCartas();
+                    break;
+
 
             }
             
@@ -111,6 +120,7 @@ namespace SerializableYugi
                             soporte.Text = magica.get_soporte();
                             set.Text = magica.get_rareza();
                             copias.Text = "" + magica.get_copias();
+                            rutadeimagen = magica.get_ruta();
                         }//IF;
                         else OmitirActualizado(magica, null, null);
                     };
@@ -135,6 +145,7 @@ namespace SerializableYugi
                             subtipo.Text = mons.getSubtipo();
                             arquetipo.Text = mons.get_arquetipo();
                             niivel.Text = mons.getNivel() + "";
+                            rutadeimagen = mons.get_ruta();
 
                         }
                         else OmitirActualizado(null, mons, null);
@@ -153,6 +164,7 @@ namespace SerializableYugi
                             soporte.Text = trampa.get_soporte();
                             set.Text = trampa.get_rareza();
                             copias.Text = "" + trampa.get_copias();
+                            rutadeimagen= trampa.get_ruta();
                         }
                         else OmitirActualizado(null, null, trampa);
                     }; break;

@@ -5,9 +5,11 @@ namespace SerializableYugi
 {
     public partial class Carta : Form
     {
-        public Carta(string iinombre, string iidescripcion, string iiatk, string iidef, string iitipomons, string iiatributo, string iiset, string iiruta)
+        int tipocarta = 0;
+        public Carta(string iinombre, string iidescripcion, string iiatk, string iidef, string iitipomons, string iiatributo, string iiset, string iiruta, int iitipocarta)
         {
             InitializeComponent();
+            tipocarta = iitipocarta;
             nombre.Text = iinombre;
             tipomons.Text = iitipomons;
             descripcion.Text = iidescripcion;
@@ -29,15 +31,20 @@ namespace SerializableYugi
             }
         }//CONSTRUCTOR
 
-        public Carta(string iinombre, string iitipo, string iidescripcion, string iiset, string iiruta)
+        public Carta(string iinombre, string iitipo, string iidescripcion, string iiset, string iiruta, int iitipocarta)
         {
             InitializeComponent();
+            tipocarta = iitipocarta;
             nombre.Text = iinombre;
             tipo.Text = iitipo;
             descripcion.Text = iidescripcion;
             set.Text = iiset;
             tipo.Visible = true;
             ilustracion.ImageLocation = iiruta;
+            switch (iitipocarta) {
+                case 2: atributo.Image = Properties.Resources.SPELL; break;
+                case 3: atributo.Image = Properties.Resources.TRAP; break;
+            }
         }//CONSTRUCTOR2
 
         private void Carta_Load(object sender, EventArgs e)
@@ -55,9 +62,15 @@ namespace SerializableYugi
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form4 fr4 = new Form4(this.set.Text, 1);
+            Form4 fr4=null;
+            switch (tipocarta) {
+                case 1:
+                    fr4 = new Form4(set.Text, 1); 
+                    break;
+                case 2: fr4 = new Form4(set.Text, 2);
+                    break;
+            }
             fr4.Show();
-            this.Close();
         }
     }
 }

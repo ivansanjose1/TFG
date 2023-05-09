@@ -178,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ICONOS\OBELISKPIXELART.ico" />
+    <None Include="ICONOS\TRAP.png" />
     <Content Include="ROMPECABEZASPIXELART.ico" />
     <Content Include="ICONOS\DARK.png" />
     <None Include="ICONOS\DEFAULTerror.png" />

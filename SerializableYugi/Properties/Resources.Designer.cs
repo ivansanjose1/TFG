@@ -153,6 +153,16 @@ namespace SerializableYugi.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TRAP {
+            get {
+                object obj = ResourceManager.GetObject("TRAP", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WATER {
             get {
                 object obj = ResourceManager.GetObject("WATER", resourceCulture);

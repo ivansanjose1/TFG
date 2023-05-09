@@ -299,13 +299,13 @@ namespace SerializableYugi
                 switch (archivo)
                 {
                     case "Monstruos":
-                        cr = new Carta(m.get_nombre(), m.getDescripcion(), " " + m.get_atk(), " " + m.get_def(), m.get_tipo(), m.get_atributo(), m.get_set(), m.get_ruta());
+                        cr = new Carta(m.get_nombre(), m.getDescripcion(), " " + m.get_atk(), " " + m.get_def(), m.get_tipo(), m.get_atributo(), m.get_set(), m.get_ruta(), 1);
                         break;
                     case "Magicas":
-                        cr = new Carta(ma.get_nombre(), ma.get_tipo(), ma.getDescripcion(), ma.get_rareza(), ma.get_ruta());
+                        cr = new Carta(ma.get_nombre(), ma.get_tipo(), ma.getDescripcion(), ma.get_rareza(), ma.get_ruta(), 2);
                         break;
                     case "Trampas":
-                        cr = new Carta(t.get_nombre(), t.get_tipo(), t.getDescripcion(), t.get_rareza(), t.get_ruta());
+                        cr = new Carta(t.get_nombre(), t.get_tipo(), t.getDescripcion(), t.get_rareza(), t.get_ruta(), 3);
                         break;
 
                 }//SWITCH
