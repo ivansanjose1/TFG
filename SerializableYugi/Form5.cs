@@ -41,7 +41,8 @@ namespace SerializableYugi
             set.Text = iiset;
             tipo.Visible = true;
             ilustracion.ImageLocation = iiruta;
-            switch (iitipocarta) {
+            switch (iitipocarta)
+            {
                 case 2: atributo.Image = Properties.Resources.SPELL; break;
                 case 3: atributo.Image = Properties.Resources.TRAP; break;
             }
@@ -62,12 +63,14 @@ namespace SerializableYugi
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form4 fr4=null;
-            switch (tipocarta) {
+            Form4 fr4 = null;
+            switch (tipocarta)
+            {
                 case 1:
-                    fr4 = new Form4(set.Text, 1); 
+                    fr4 = new Form4(set.Text, 1);
                     break;
-                case 2: fr4 = new Form4(set.Text, 2);
+                case 2:
+                    fr4 = new Form4(set.Text, 2);
                     break;
             }
             fr4.Show();

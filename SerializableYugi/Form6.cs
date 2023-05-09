@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SerializableYugi
 {
@@ -20,7 +12,7 @@ namespace SerializableYugi
         Magica magica = null;
         Trampa trampa = null;
         int focuslistbox = 0;
-        int limite_Cartas= 60;
+        int limite_Cartas = 60;
 
 
         public Form6()
@@ -42,6 +34,7 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(listBoxMagia, 8);
             Fuente.LocalizarFuente(listBoxMonstruos, 8);
             Fuente.LocalizarFuente(listBoxTrampas, 8);
+            Fuente.LocalizarFuente(label2, 8);
         }
 
         private void Monstrar_monstruos()
@@ -113,8 +106,7 @@ namespace SerializableYugi
         }
         private void Comprobador_Cartas()
         {
-            int total_Cartas_Actualers = listBoxBaraja.Items.Count;
-            if (total_Cartas_Actualers >= limite_Cartas + 1)
+            if (listBoxBaraja.Items.Count >= limite_Cartas + 1)
             {
                 MessageBox.Show("Has llegado al limite");
                 listBoxMonstruos.Enabled = false;
@@ -123,7 +115,7 @@ namespace SerializableYugi
             }
             else
             {
-                textBox1.Text = limite_Cartas + "/" + total_Cartas_Actualers;
+                label2.Text=listBoxBaraja.Items.Count + "/" + limite_Cartas;
                 listBoxMonstruos.Enabled = true;
                 listBoxMagia.Enabled = true;
                 listBoxTrampas.Enabled = true;
@@ -158,7 +150,7 @@ namespace SerializableYugi
 
         private void Añadir_Click(object sender, EventArgs e)
         {
-            
+
             AnnnadirBaraja();
             Comprobador_Cartas();
         }
@@ -178,7 +170,7 @@ namespace SerializableYugi
             {
                 monstruo = (Monstruo)bf.Deserialize(fsMonstruos);
 
-                if (iimonstruo.get_nombre().ToLower().Contains(monstruo.get_soporte().ToLower())&&monstruo.get_soporte()!=""&& monstruo.get_soporte().ToLower()!= "no")
+                if (iimonstruo.get_nombre().ToLower().Contains(monstruo.get_soporte().ToLower()) && monstruo.get_soporte() != "" && monstruo.get_soporte().ToLower() != "no")
                 {
                     if (!ComprobarSugerencias(monstruo, null, null, 1)) Sugerencia.Items.Add(monstruo);
                 }
@@ -193,7 +185,7 @@ namespace SerializableYugi
                 magica = (Magica)bf.Deserialize(fsMagicas);
                 if (iimonstruo.get_nombre().ToLower().Contains(magica.get_soporte().ToLower()) && magica.get_soporte() != "" && magica.get_soporte().ToLower() != "no")
                 {
-                    if(!ComprobarSugerencias(null, magica, null, 2)) Sugerencia.Items.Add(magica);
+                    if (!ComprobarSugerencias(null, magica, null, 2)) Sugerencia.Items.Add(magica);
                 }
 
             }
@@ -212,8 +204,9 @@ namespace SerializableYugi
 
                 }
                 fsTrampas.Close();
-            }catch(Exception e){ }
-           
+            }
+            catch (Exception e) { }
+
 
 
         }
@@ -229,25 +222,28 @@ namespace SerializableYugi
 
         }
 
-        private bool ComprobarSugerencias(Monstruo iimonstruo, Magica iimagica, Trampa iitrampa, int indicador) {
+        private bool ComprobarSugerencias(Monstruo iimonstruo, Magica iimagica, Trampa iitrampa, int indicador)
+        {
             bool encontrado = false;
-            switch (indicador) {
+            switch (indicador)
+            {
                 case 1:
                     for (int i = 0; i < Sugerencia.Items.Count; i++)
                     {
                         if (iimonstruo.GetType() == Sugerencia.Items[i].GetType() && iimonstruo.get_nombre() == (Sugerencia.Items[i] as Monstruo).get_nombre()) encontrado = true;
                     }
                     break;
-                
+
                 case 2:
                     for (int i = 0; i < Sugerencia.Items.Count; i++)
                     {
-                        if (iimagica.GetType()==Sugerencia.Items[i].GetType()&&iimagica.get_nombre() == (Sugerencia.Items[i] as Magica).get_nombre()) encontrado = true;
+                        if (iimagica.GetType() == Sugerencia.Items[i].GetType() && iimagica.get_nombre() == (Sugerencia.Items[i] as Magica).get_nombre()) encontrado = true;
                     }
                     break;
 
                 case 3:
-                    for (int i = 0; i < Sugerencia.Items.Count; i++) {
+                    for (int i = 0; i < Sugerencia.Items.Count; i++)
+                    {
                         if (iitrampa.GetType() == Sugerencia.Items[i].GetType() && iitrampa.get_nombre() == (Sugerencia.Items[i] as Trampa).get_nombre()) encontrado = true;
                     }
                     break;

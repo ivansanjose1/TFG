@@ -104,7 +104,7 @@ namespace SerializableYugi
             return atributo;
         }
 
- 
+
         public int get_atk()
         {
             return atk;

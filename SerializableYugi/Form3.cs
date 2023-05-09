@@ -322,11 +322,13 @@ namespace SerializableYugi
 
         private void nombre_Leave(object sender, EventArgs e)
         {
-            if(!button1.Focused) { (sender as Control).Text = "Buscar por "+(sender as Control).Name; }
+            if (!button1.Focused) { (sender as Control).Text = "Buscar por " + (sender as Control).Name; }
         }
 
-        private void ReestablecerTextos() {
-            foreach (Control c in panel1.Controls) {
+        private void ReestablecerTextos()
+        {
+            foreach (Control c in panel1.Controls)
+            {
                 c.Text = "Buscar por " + c.Name;
             }
         }

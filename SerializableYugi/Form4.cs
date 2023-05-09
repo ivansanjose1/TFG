@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
@@ -14,7 +13,7 @@ namespace SerializableYugi
         {
             InitializeComponent();
         }
-    
+
         string archivo = null;
         Monstruo mons = null;
         Magica magica = null;
@@ -49,7 +48,7 @@ namespace SerializableYugi
 
 
             }
-            
+
 
         }
         private void RellenarTipos(object sender)
@@ -103,75 +102,78 @@ namespace SerializableYugi
         }//CHCKED CHANGED
         private void BuscarCartas()
         {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo)
+            try
             {
-                case "Magicas":
-                    while ((fs.Position < fs.Length))
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.get_rareza().ToLower().Contains(codigobusc.ToLower()))
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                switch (archivo)
+                {
+                    case "Magicas":
+                        while ((fs.Position < fs.Length))
                         {
-                            Nombre.Text = magica.get_nombre();
-                            Descripcion.Text = magica.getDescripcion();
-                            tipo.Text = magica.get_tipo();
-                            rareza.Text = magica.get_set();
-                            soporte.Text = magica.get_soporte();
-                            set.Text = magica.get_rareza();
-                            copias.Text = "" + magica.get_copias();
-                            rutadeimagen = magica.get_ruta();
-                        }//IF;
-                        else OmitirActualizado(magica, null, null);
-                    };
-                    break;
-                case "Monstruos":
-                    while ((fs.Position < fs.Length))
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.get_set().ToLower().Contains(codigobusc.ToLower()))
+                            magica = (Magica)bf.Deserialize(fs);
+                            if (magica.get_rareza().ToLower().Contains(codigobusc.ToLower()))
+                            {
+                                Nombre.Text = magica.get_nombre();
+                                Descripcion.Text = magica.getDescripcion();
+                                tipo.Text = magica.get_tipo();
+                                rareza.Text = magica.get_set();
+                                soporte.Text = magica.get_soporte();
+                                set.Text = magica.get_rareza();
+                                copias.Text = "" + magica.get_copias();
+                                rutadeimagen = magica.get_ruta();
+                            }//IF;
+                            else OmitirActualizado(magica, null, null);
+                        };
+                        break;
+                    case "Monstruos":
+                        while ((fs.Position < fs.Length))
                         {
-                            Nombre.Text = mons.get_nombre();
-                            Descripcion.Text = mons.getDescripcion();
-                            tipo.Text = mons.get_tipo();
-                            set.Text = mons.get_set();
-                            soporte.Text = mons.get_soporte();
-                            rareza.Text = mons.get_rareza();
-                            copias.Text = "" + mons.get_copias();
-                            atributo.Text = mons.get_atributo();
-                            attk.Text = mons.get_atk() + "";
-                            def.Text = mons.get_def() + "";
-                            ExtraDeck.Text = mons.getExtraDeck();
-                            subtipo.Text = mons.getSubtipo();
-                            arquetipo.Text = mons.get_arquetipo();
-                            niivel.Text = mons.getNivel() + "";
-                            rutadeimagen = mons.get_ruta();
+                            mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.get_set().ToLower().Contains(codigobusc.ToLower()))
+                            {
+                                Nombre.Text = mons.get_nombre();
+                                Descripcion.Text = mons.getDescripcion();
+                                tipo.Text = mons.get_tipo();
+                                set.Text = mons.get_set();
+                                soporte.Text = mons.get_soporte();
+                                rareza.Text = mons.get_rareza();
+                                copias.Text = "" + mons.get_copias();
+                                atributo.Text = mons.get_atributo();
+                                attk.Text = mons.get_atk() + "";
+                                def.Text = mons.get_def() + "";
+                                ExtraDeck.Text = mons.getExtraDeck();
+                                subtipo.Text = mons.getSubtipo();
+                                arquetipo.Text = mons.get_arquetipo();
+                                niivel.Text = mons.getNivel() + "";
+                                rutadeimagen = mons.get_ruta();
 
-                        }
-                        else OmitirActualizado(null, mons, null);
-                    };
-                    break;
-                case "Trampas":
-                    while ((fs.Position < fs.Length))
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.get_rareza().ToLower().Contains(codigobusc.ToLower()))
+                            }
+                            else OmitirActualizado(null, mons, null);
+                        };
+                        break;
+                    case "Trampas":
+                        while ((fs.Position < fs.Length))
                         {
-                            Nombre.Text = trampa.get_nombre();
-                            Descripcion.Text = trampa.getDescripcion();
-                            tipo.Text = trampa.get_tipo();
-                            rareza.Text = trampa.get_set();
-                            soporte.Text = trampa.get_soporte();
-                            set.Text = trampa.get_rareza();
-                            copias.Text = "" + trampa.get_copias();
-                            rutadeimagen= trampa.get_ruta();
-                        }
-                        else OmitirActualizado(null, null, trampa);
-                    }; break;
-            }//SWITCH
-            fs.Close();
-            ConvertirArrayEnFichero();
-
+                            trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.get_rareza().ToLower().Contains(codigobusc.ToLower()))
+                            {
+                                Nombre.Text = trampa.get_nombre();
+                                Descripcion.Text = trampa.getDescripcion();
+                                tipo.Text = trampa.get_tipo();
+                                rareza.Text = trampa.get_set();
+                                soporte.Text = trampa.get_soporte();
+                                set.Text = trampa.get_rareza();
+                                copias.Text = "" + trampa.get_copias();
+                                rutadeimagen = trampa.get_ruta();
+                            }
+                            else OmitirActualizado(null, null, trampa);
+                        }; break;
+                }//SWITCH
+                fs.Close();
+                ConvertirArrayEnFichero();
+            }
+            catch (Exception) { MessageBox.Show("No se encuentra ese codigo"); }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -335,24 +337,28 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(button2, 8);
             Fuente.LocalizarFuente(button3, 8);
             Fuente.LocalizarFuente(buscada, 8);
-            foreach (Control c in paneletiquetas1.Controls) {
+            foreach (Control c in paneletiquetas1.Controls)
+            {
                 Fuente.LocalizarFuente(c, 8);
             }
-            foreach (Control c in paneletiquetas2.Controls) {
+            foreach (Control c in paneletiquetas2.Controls)
+            {
                 Fuente.LocalizarFuente(c, 8);
             }
 
-            foreach (Control c in panelCHK.Controls) {
+            foreach (Control c in panelCHK.Controls)
+            {
                 Fuente.LocalizarFuente(c, 8);
             }
-            foreach (Control c in panelgen.Controls) {
+            foreach (Control c in panelgen.Controls)
+            {
                 Fuente.LocalizarFuente(c, 8);
             }
 
             foreach (Control c in panelmonst.Controls)
             {
                 Fuente.LocalizarFuente(c, 8);
-            } 
+            }
         }
 
         private void Nombre_Click(object sender, EventArgs e)

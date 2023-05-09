@@ -501,7 +501,7 @@
             this.paneletiquetas2.Controls.Add(this.label11);
             this.paneletiquetas2.Location = new System.Drawing.Point(731, 46);
             this.paneletiquetas2.Name = "paneletiquetas2";
-            this.paneletiquetas2.Size = new System.Drawing.Size(57, 285);
+            this.paneletiquetas2.Size = new System.Drawing.Size(66, 285);
             this.paneletiquetas2.TabIndex = 61;
             // 
             // Form4

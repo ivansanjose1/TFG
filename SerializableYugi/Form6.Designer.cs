@@ -33,10 +33,10 @@
             this.listBoxMagia = new System.Windows.Forms.ListBox();
             this.listBoxTrampas = new System.Windows.Forms.ListBox();
             this.Anhadir = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.Sugerencia = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxBaraja
@@ -89,14 +89,6 @@
             this.Anhadir.UseVisualStyleBackColor = true;
             this.Anhadir.Click += new System.EventHandler(this.Añadir_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(48, 20);
-            this.textBox1.TabIndex = 5;
-            // 
             // buttonEliminar
             // 
             this.buttonEliminar.Location = new System.Drawing.Point(730, 100);
@@ -122,19 +114,28 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 306);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 13);
+            this.label1.Size = new System.Drawing.Size(154, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Quizá te interesen estas";
+            this.label1.Text = "Quizá te interese añadir esta/s:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Número de cartas:";
             // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 495);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Sugerencia);
             this.Controls.Add(this.buttonEliminar);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Anhadir);
             this.Controls.Add(this.listBoxTrampas);
             this.Controls.Add(this.listBoxMagia);
@@ -155,9 +156,9 @@
         private System.Windows.Forms.ListBox listBoxMagia;
         private System.Windows.Forms.ListBox listBoxTrampas;
         private System.Windows.Forms.Button Anhadir;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.ListBox Sugerencia;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
