@@ -158,6 +158,7 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(panelmons2, 8);
             Fuente.LocalizarFuente(button1, 8);
             Fuente.LocalizarFuente(button2, 8);
+            this.Icon = Properties.Resources.SLIFERPIXELART;
         }
 
         private void button2_Click(object sender, EventArgs e)

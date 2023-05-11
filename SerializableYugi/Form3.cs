@@ -36,6 +36,7 @@ namespace SerializableYugi
         }
         private void Form3_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.RAPIXELART;
             Fuente.CargarFuente();
             foreach (Control c in panel1.Controls)
             {
