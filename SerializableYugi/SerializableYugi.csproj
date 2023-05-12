@@ -190,11 +190,6 @@
     <None Include="ICONOS\MOUNTAINPXARTBW.png" />
     <None Include="ICONOS\SOGENBWPXART.png" />
     <None Include="ICONOS\SOGENCOLORPXART.png" />
-    <None Include="ICONOS\REDEYES.png" />
-    <None Include="ICONOS\BLUEYES.png" />
-    <None Include="ICONOS\MAGOOSCURO.png" />
-    <None Include="ICONOS\NEOS.png" />
-    <None Include="ICONOS\DUEL ACADEMY.png" />
     <Content Include="ROMPECABEZASPIXELART.ico" />
     <Content Include="ICONOS\DARK.png" />
     <None Include="ICONOS\DEFAULTerror.png" />

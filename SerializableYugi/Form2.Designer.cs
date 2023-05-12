@@ -145,71 +145,54 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(22, 5);
+            this.label1.Location = new System.Drawing.Point(11, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Nombre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(3, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Descripción";
+            this.label2.Text = "Descripcion";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Black;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(38, 170);
+            this.label3.Location = new System.Drawing.Point(11, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 15);
+            this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Tipo";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Black;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(43, 216);
+            this.label4.Location = new System.Drawing.Point(11, 216);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 15);
+            this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Set";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(22, 263);
+            this.label5.Location = new System.Drawing.Point(11, 263);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 15);
+            this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 16;
             this.label5.Text = "Soporte";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(25, 308);
+            this.label6.Location = new System.Drawing.Point(11, 308);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 15);
+            this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Rareza";
             // 
@@ -239,70 +222,54 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Black;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label7.Location = new System.Drawing.Point(13, 21);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 15);
+            this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Atributo";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Black;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(-3, 61);
+            this.label8.Location = new System.Drawing.Point(13, 62);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 15);
+            this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 21;
             this.label8.Text = "ExtraDeck";
             // 
             // Nivel
             // 
             this.Nivel.AutoSize = true;
-            this.Nivel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Nivel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Nivel.Location = new System.Drawing.Point(23, 101);
+            this.Nivel.Location = new System.Drawing.Point(13, 100);
             this.Nivel.Name = "Nivel";
-            this.Nivel.Size = new System.Drawing.Size(33, 15);
+            this.Nivel.Size = new System.Drawing.Size(31, 13);
             this.Nivel.TabIndex = 22;
             this.Nivel.Text = "Nivel";
             // 
             // arquetipo
             // 
             this.arquetipo.AutoSize = true;
-            this.arquetipo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.arquetipo.ForeColor = System.Drawing.SystemColors.Control;
-            this.arquetipo.Location = new System.Drawing.Point(2, 128);
+            this.arquetipo.Location = new System.Drawing.Point(13, 136);
             this.arquetipo.Name = "arquetipo";
-            this.arquetipo.Size = new System.Drawing.Size(54, 15);
+            this.arquetipo.Size = new System.Drawing.Size(52, 13);
             this.arquetipo.TabIndex = 23;
             this.arquetipo.Text = "Arquetipo";
             // 
             // atk
             // 
             this.atk.AutoSize = true;
-            this.atk.BackColor = System.Drawing.Color.Black;
-            this.atk.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.atk.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.atk.Location = new System.Drawing.Point(31, 165);
+            this.atk.Location = new System.Drawing.Point(13, 166);
             this.atk.Name = "atk";
-            this.atk.Size = new System.Drawing.Size(25, 15);
+            this.atk.Size = new System.Drawing.Size(23, 13);
             this.atk.TabIndex = 24;
             this.atk.Text = "Atk";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Black;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(30, 204);
+            this.label12.Location = new System.Drawing.Point(13, 205);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(26, 15);
+            this.label12.Size = new System.Drawing.Size(24, 13);
             this.label12.TabIndex = 25;
             this.label12.Text = "Def";
             // 
@@ -341,11 +308,9 @@
             // labelcopias
             // 
             this.labelcopias.AutoSize = true;
-            this.labelcopias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelcopias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelcopias.Location = new System.Drawing.Point(27, 360);
+            this.labelcopias.Location = new System.Drawing.Point(11, 360);
             this.labelcopias.Name = "labelcopias";
-            this.labelcopias.Size = new System.Drawing.Size(41, 15);
+            this.labelcopias.Size = new System.Drawing.Size(39, 13);
             this.labelcopias.TabIndex = 28;
             this.labelcopias.Text = "Copias";
             // 
@@ -363,7 +328,6 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.checkBox1.Location = new System.Drawing.Point(13, 0);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(75, 17);
@@ -376,7 +340,6 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.checkBox2.Location = new System.Drawing.Point(115, 0);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(66, 17);
@@ -389,15 +352,13 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.BackColor = System.Drawing.Color.Black;
-            this.checkBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.checkBox3.Location = new System.Drawing.Point(232, 0);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(67, 17);
             this.checkBox3.TabIndex = 32;
             this.checkBox3.Tag = "3";
             this.checkBox3.Text = "Trampas";
-            this.checkBox3.UseVisualStyleBackColor = false;
+            this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // subtipo
@@ -420,18 +381,14 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Black;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(13, 241);
+            this.label9.Location = new System.Drawing.Point(13, 242);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 15);
+            this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 34;
             this.label9.Text = "Subtipo";
             // 
             // panelmonst
             // 
-            this.panelmonst.BackColor = System.Drawing.Color.Transparent;
             this.panelmonst.Controls.Add(this.subtipo);
             this.panelmonst.Controls.Add(this.ExtraDeck);
             this.panelmonst.Controls.Add(this.atributo);
@@ -447,7 +404,6 @@
             // 
             // panelmons2
             // 
-            this.panelmons2.BackColor = System.Drawing.Color.Transparent;
             this.panelmons2.Controls.Add(this.label9);
             this.panelmons2.Controls.Add(this.label12);
             this.panelmons2.Controls.Add(this.atk);
@@ -462,7 +418,6 @@
             // 
             // panelCHK
             // 
-            this.panelCHK.BackColor = System.Drawing.Color.Transparent;
             this.panelCHK.Controls.Add(this.checkBox3);
             this.panelCHK.Controls.Add(this.checkBox2);
             this.panelCHK.Controls.Add(this.checkBox1);
@@ -473,7 +428,6 @@
             // 
             // panelgen
             // 
-            this.panelgen.BackColor = System.Drawing.Color.Transparent;
             this.panelgen.Controls.Add(this.Nombre);
             this.panelgen.Controls.Add(this.Descripcion);
             this.panelgen.Controls.Add(this.tipo);
@@ -504,7 +458,6 @@
             // 
             // paneletiquetas1
             // 
-            this.paneletiquetas1.BackColor = System.Drawing.Color.Transparent;
             this.paneletiquetas1.Controls.Add(this.label1);
             this.paneletiquetas1.Controls.Add(this.label2);
             this.paneletiquetas1.Controls.Add(this.label3);
@@ -514,16 +467,13 @@
             this.paneletiquetas1.Controls.Add(this.labelcopias);
             this.paneletiquetas1.Location = new System.Drawing.Point(1, 35);
             this.paneletiquetas1.Name = "paneletiquetas1";
-            this.paneletiquetas1.Size = new System.Drawing.Size(80, 395);
+            this.paneletiquetas1.Size = new System.Drawing.Size(74, 395);
             this.paneletiquetas1.TabIndex = 40;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::SerializableYugi.Properties.Resources.DUEL_ACADEMY;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.paneletiquetas1);
             this.Controls.Add(this.button2);
@@ -532,9 +482,8 @@
             this.Controls.Add(this.panelmonst);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panelgen);
-            this.DoubleBuffered = true;
             this.Name = "Form2";
-            this.Text = " Añadir Cartas";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panelmonst.ResumeLayout(false);
             this.panelmonst.PerformLayout();

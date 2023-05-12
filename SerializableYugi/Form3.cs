@@ -47,7 +47,6 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(Magicas, 8);
             Fuente.LocalizarFuente(Trampas, 8);
             Fuente.LocalizarFuente(button1, 8);
-            Fuente.LocalizarFuente(label1, 8);
         }
 
         private void HabilitarMonstruos()

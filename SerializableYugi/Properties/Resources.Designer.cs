@@ -63,16 +63,6 @@ namespace SerializableYugi.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BLUEYES {
-            get {
-                object obj = ResourceManager.GetObject("BLUEYES", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap DARK {
             get {
                 object obj = ResourceManager.GetObject("DARK", resourceCulture);
@@ -96,16 +86,6 @@ namespace SerializableYugi.Properties {
         internal static System.Drawing.Bitmap DIVINE {
             get {
                 object obj = ResourceManager.GetObject("DIVINE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DUEL_ACADEMY {
-            get {
-                object obj = ResourceManager.GetObject("DUEL_ACADEMY", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,16 +123,6 @@ namespace SerializableYugi.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MAGOOSCURO {
-            get {
-                object obj = ResourceManager.GetObject("MAGOOSCURO", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap MONTANACOLORPXART {
             get {
                 object obj = ResourceManager.GetObject("MONTANACOLORPXART", resourceCulture);
@@ -166,16 +136,6 @@ namespace SerializableYugi.Properties {
         internal static System.Drawing.Bitmap MOUNTAINPXARTBW {
             get {
                 object obj = ResourceManager.GetObject("MOUNTAINPXARTBW", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap NEOS {
-            get {
-                object obj = ResourceManager.GetObject("NEOS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -197,16 +157,6 @@ namespace SerializableYugi.Properties {
             get {
                 object obj = ResourceManager.GetObject("RAPIXELART", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap REDEYES {
-            get {
-                object obj = ResourceManager.GetObject("REDEYES", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

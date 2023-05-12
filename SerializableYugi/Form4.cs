@@ -24,14 +24,12 @@ namespace SerializableYugi
         List<Monstruo> monst = new List<Monstruo>();
         List<Trampa> tramp = new List<Trampa>();
         bool guardada = false;
-        bool cerradoautomatico = false;
         public Form4(string codigo, int modo)
         {
             InitializeComponent();
             switch (modo)
             {
                 case 1:
-                    cerradoautomatico = true;
                     checkBox1.Checked = true;
                     button1.Enabled = false;
                     archivo = checkBox1.Text;
@@ -40,19 +38,9 @@ namespace SerializableYugi
                     BuscarCartas();
                     break;
                 case 2:
-                    cerradoautomatico = true;
                     checkBox2.Checked = true;
                     button1.Enabled = false;
                     archivo = checkBox2.Text;
-                    buscada.Text = codigo;
-                    codigobusc = codigo;
-                    BuscarCartas();
-                    break;
-                case 3:
-                    cerradoautomatico = true;
-                    checkBox3.Checked = true;
-                    button1.Enabled = false;
-                    archivo = checkBox3.Text;
                     buscada.Text = codigo;
                     codigobusc = codigo;
                     BuscarCartas();
@@ -165,7 +153,7 @@ namespace SerializableYugi
                         };
                         break;
                     case "Trampas":
-                        while (fs.Position < fs.Length)
+                        while ((fs.Position < fs.Length))
                         {
                             trampa = (Trampa)bf.Deserialize(fs);
                             if (trampa.get_rareza().ToLower().Contains(codigobusc.ToLower()))
@@ -260,7 +248,6 @@ namespace SerializableYugi
                 LimpiarCampos();
                 guardada = true;
                 MessageBox.Show("Tu carta se ha actualizado con exito");
-                if (cerradoautomatico == true) this.Close();
             }
             catch (Exception) { }
         }

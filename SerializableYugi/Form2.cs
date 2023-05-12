@@ -151,13 +151,13 @@ namespace SerializableYugi
         private void Form2_Load(object sender, EventArgs e)
         {
             Fuente.CargarFuente();
-            Fuente.LocalizarFuente(panelCHK, 9);
-            Fuente.LocalizarFuente(paneletiquetas1, 9);
-            Fuente.LocalizarFuente(panelgen, 9);
-            Fuente.LocalizarFuente(panelmonst, 9);
-            Fuente.LocalizarFuente(panelmons2, 9);
-            Fuente.LocalizarFuente(button1, 9);
-            Fuente.LocalizarFuente(button2, 9);
+            Fuente.LocalizarFuente(panelCHK, 8);
+            Fuente.LocalizarFuente(paneletiquetas1, 8);
+            Fuente.LocalizarFuente(panelgen, 8);
+            Fuente.LocalizarFuente(panelmonst, 8);
+            Fuente.LocalizarFuente(panelmons2, 8);
+            Fuente.LocalizarFuente(button1, 8);
+            Fuente.LocalizarFuente(button2, 8);
             this.Icon = Properties.Resources.SLIFERPIXELART;
         }
 

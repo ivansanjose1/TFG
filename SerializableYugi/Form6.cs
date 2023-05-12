@@ -35,8 +35,6 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(listBoxMonstruos, 8);
             Fuente.LocalizarFuente(listBoxTrampas, 8);
             Fuente.LocalizarFuente(label2, 8);
-            Fuente.LocalizarFuente(button1, 8);
-            Fuente.LocalizarFuente(button2, 8);
         }
 
         private void Monstrar_monstruos()
@@ -103,9 +101,6 @@ namespace SerializableYugi
                 case 3:
                     listBoxBaraja.Items.Add(listBoxTrampas.SelectedItem);
                     break;
-                case 4:
-                    listBoxBaraja.Items.Add(Sugerencia.SelectedItem);
-                    break;
             }
 
         }
@@ -140,9 +135,6 @@ namespace SerializableYugi
                     break;
                 case 3:
                     focuslistbox = 3;
-                    break;
-                case 4:
-                    focuslistbox = 4;
                     break;
             }
 
@@ -205,7 +197,7 @@ namespace SerializableYugi
                 while (fsTrampas.Position < fsTrampas.Length)
                 {
                     trampa = (Trampa)bf.Deserialize(fsTrampas);
-                    if (iimonstruo.get_nombre().ToLower().Contains(trampa.get_soporte().ToLower()) && trampa.get_soporte() != "" && trampa.get_soporte().ToLower() != "no")
+                    if (trampa.get_soporte() == iimonstruo.get_arquetipo())
                     {
                         if (!ComprobarSugerencias(null, null, trampa, 3)) Sugerencia.Items.Add(trampa);
                     }
@@ -258,42 +250,6 @@ namespace SerializableYugi
             }
             return encontrado;
 
-        }
-
-        private void Sugerencia_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                listBoxBaraja.Items.Add(Sugerencia.SelectedItem);
-            }
-            catch (Exception) { }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            listBoxBaraja.Items.Clear();
-            Sugerencia.Items.Clear();
-            label2.Text = "0/60";
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (listBoxBaraja.Items.Count < 40)
-            {
-                MessageBox.Show("Aun no tienes 40 cartas");
-            }
-            else {
-               var vent=saveFileDialog1.ShowDialog();
-                if (vent == DialogResult.OK)
-                {
-                    string archivo = saveFileDialog1.FileName;
-                    StreamWriter sw = new StreamWriter(archivo);
-                    for (int i = 0; i<listBoxBaraja.Items.Count; i++) {
-                        sw.Write(listBoxBaraja.Items[i]+"\n");
-                    }
-                    sw.Close();
-                }
-            }
         }
     }
 }
