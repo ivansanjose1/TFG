@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SerializableYugi
 {
@@ -12,6 +6,7 @@ namespace SerializableYugi
     [Serializable]
     internal class Monstruo
     {
+        string rutaimagen;
         string nombre;
         string descripcion;
         string tipo;
@@ -43,53 +38,80 @@ namespace SerializableYugi
             this.nivel = nivel;
             this.copias = copias;
         }
-        public string get_nombre() {
+        public Monstruo(string nombre, string descripcion, string tipo, string atributo, string subtipo, string extradeck, string arquetipo, string rareza, string set, string soporte, int atk, int def, int nivel, int copias, string iiruta)
+        {
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.tipo = tipo;
+            this.atributo = atributo;
+            this.subtipo = subtipo;
+            this.extradeck = extradeck;
+            this.arquetipo = arquetipo;
+            this.rareza = rareza;
+            this.set = set;
+            this.soporte = soporte;
+            this.atk = atk;
+            this.def = def;
+            this.nivel = nivel;
+            this.copias = copias;
+            this.rutaimagen = iiruta;
+        }
+        public string get_nombre()
+        {
             return nombre;
         }
 
-        public string get_set() {
+        public string get_set()
+        {
             return set;
         }
-        public string get_soporte() {
+        public string get_soporte()
+        {
             return soporte;
         }
-        public string get_tipo() {
+        public string get_tipo()
+        {
             return tipo;
         }
 
-        public string getDescripcion() {
+        public string getDescripcion()
+        {
             return descripcion;
         }
 
-        public string getArquetipo() {
-            return soporte;
-        }
-
-        public string getSubtipo() {
-            return subtipo;
-        }
-
-        public string getExtraDeck() {
-            return extradeck;
-        }
-
-        public int getNivel() {
-            return nivel;
-        }
-
-        public string get_atributo() {
-            return atributo;
-        }
-
-        public string get_arquetipo() {
+        public string get_arquetipo()
+        {
             return arquetipo;
         }
 
-        public int get_atk() {
+        public string getSubtipo()
+        {
+            return subtipo;
+        }
+
+        public string getExtraDeck()
+        {
+            return extradeck;
+        }
+
+        public int getNivel()
+        {
+            return nivel;
+        }
+
+        public string get_atributo()
+        {
+            return atributo;
+        }
+
+
+        public int get_atk()
+        {
             return atk;
         }
 
-        public int get_def() {
+        public int get_def()
+        {
             return def;
         }
         public override String ToString()
@@ -103,12 +125,24 @@ namespace SerializableYugi
             return rareza;
         }
 
-        public int get_copias() {
+        public int get_copias()
+        {
             return copias;
+        }
+
+        public void set_ruta(string iiruta)
+        {
+            rutaimagen = iiruta;
+        }
+        public string get_ruta()
+        {
+            return rutaimagen;
         }
     }//MOnstruo
     [Serializable]
-    internal class Magica {
+    internal class Magica
+    {
+        string rutaimagen;
         string nombre;
         string descripcion;
         string tipo;
@@ -127,7 +161,19 @@ namespace SerializableYugi
             this.soporte = soporte;
             this.copias = copias;
         }
-        public string get_nombre() {
+        public Magica(string nombre, string descripcion, string tipo, string set, string rareza, string soporte, int copias, string iiruta)
+        {
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.tipo = tipo;
+            this.rareza = rareza;
+            this.set = set;
+            this.soporte = soporte;
+            this.copias = copias;
+            this.rutaimagen = iiruta;
+        }
+        public string get_nombre()
+        {
             return nombre;
         }
 
@@ -140,10 +186,12 @@ namespace SerializableYugi
         {
             return set;
         }
-        public string get_soporte() {
+        public string get_soporte()
+        {
             return soporte;
         }
-        public string get_tipo() {
+        public string get_tipo()
+        {
             return tipo;
         }
 
@@ -161,9 +209,19 @@ namespace SerializableYugi
         {
             return rareza;
         }
+        public void set_ruta(string iiruta)
+        {
+            rutaimagen = iiruta;
+        }
+        public string get_ruta()
+        {
+            return rutaimagen;
+        }
     }//MAGICAS
     [Serializable]
-    internal class Trampa {
+    internal class Trampa
+    {
+        string rutaimagen;
         string nombre;
         string descripcion;
         string tipo;
@@ -182,6 +240,17 @@ namespace SerializableYugi
             this.soporte = soporte;
             this.copias = copias;
         }
+        public Trampa(string nombre, string descripcion, string tipo, string set, string rareza, string soporte, int copias, string iiruta)
+        {
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.tipo = tipo;
+            this.rareza = rareza;
+            this.set = set;
+            this.soporte = soporte;
+            this.copias = copias;
+            this.rutaimagen = iiruta;
+        }
         public string get_nombre()
         {
             return nombre;
@@ -191,7 +260,8 @@ namespace SerializableYugi
             return copias;
         }
 
-        public string get_rareza() {
+        public string get_rareza()
+        {
             return rareza;
         }
 
@@ -212,12 +282,21 @@ namespace SerializableYugi
         {
             return descripcion;
         }
-        public override String ToString() {
+        public override String ToString()
+        {
 
             return this.nombre;
         }
 
-       
+        public void set_ruta(string iiruta)
+        {
+            rutaimagen = iiruta;
+        }
+
+        public string get_ruta()
+        {
+            return rutaimagen;
+        }
 
     }
 }

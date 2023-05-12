@@ -30,17 +30,18 @@
         {
             this.nombre = new System.Windows.Forms.TextBox();
             this.descripcion = new System.Windows.Forms.TextBox();
-            this.atributo = new System.Windows.Forms.PictureBox();
             this.atk = new System.Windows.Forms.TextBox();
             this.def = new System.Windows.Forms.TextBox();
             this.tipomons = new System.Windows.Forms.TextBox();
             this.tipo = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ilustracion = new System.Windows.Forms.PictureBox();
             this.set = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.atributo)).BeginInit();
+            this.ilustracion = new System.Windows.Forms.PictureBox();
+            this.atributo = new System.Windows.Forms.PictureBox();
+            this.editar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ilustracion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.atributo)).BeginInit();
             this.SuspendLayout();
             // 
             // nombre
@@ -57,16 +58,9 @@
             this.descripcion.Multiline = true;
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
+            this.descripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.descripcion.Size = new System.Drawing.Size(257, 98);
             this.descripcion.TabIndex = 1;
-            // 
-            // atributo
-            // 
-            this.atributo.Location = new System.Drawing.Point(246, 1);
-            this.atributo.Name = "atributo";
-            this.atributo.Size = new System.Drawing.Size(36, 32);
-            this.atributo.TabIndex = 2;
-            this.atributo.TabStop = false;
             // 
             // atk
             // 
@@ -114,14 +108,6 @@
             this.panel2.TabIndex = 8;
             this.panel2.Visible = false;
             // 
-            // ilustracion
-            // 
-            this.ilustracion.Location = new System.Drawing.Point(30, 70);
-            this.ilustracion.Name = "ilustracion";
-            this.ilustracion.Size = new System.Drawing.Size(219, 198);
-            this.ilustracion.TabIndex = 10;
-            this.ilustracion.TabStop = false;
-            // 
             // set
             // 
             this.set.Location = new System.Drawing.Point(196, 274);
@@ -130,11 +116,44 @@
             this.set.Size = new System.Drawing.Size(67, 20);
             this.set.TabIndex = 11;
             // 
+            // ilustracion
+            // 
+            this.ilustracion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ilustracion.ErrorImage = global::SerializableYugi.Properties.Resources.DEFAULTerror;
+            this.ilustracion.Image = global::SerializableYugi.Properties.Resources.DEFAULTerror;
+            this.ilustracion.InitialImage = global::SerializableYugi.Properties.Resources.DEFAULTerror;
+            this.ilustracion.Location = new System.Drawing.Point(35, 70);
+            this.ilustracion.Name = "ilustracion";
+            this.ilustracion.Size = new System.Drawing.Size(219, 198);
+            this.ilustracion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ilustracion.TabIndex = 10;
+            this.ilustracion.TabStop = false;
+            // 
+            // atributo
+            // 
+            this.atributo.Location = new System.Drawing.Point(243, 3);
+            this.atributo.Name = "atributo";
+            this.atributo.Size = new System.Drawing.Size(29, 30);
+            this.atributo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.atributo.TabIndex = 2;
+            this.atributo.TabStop = false;
+            // 
+            // editar
+            // 
+            this.editar.Location = new System.Drawing.Point(23, 410);
+            this.editar.Name = "editar";
+            this.editar.Size = new System.Drawing.Size(75, 23);
+            this.editar.TabIndex = 12;
+            this.editar.Text = "Editar";
+            this.editar.UseVisualStyleBackColor = true;
+            this.editar.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Carta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 450);
+            this.Controls.Add(this.editar);
             this.Controls.Add(this.set);
             this.Controls.Add(this.tipomons);
             this.Controls.Add(this.tipo);
@@ -145,10 +164,11 @@
             this.Controls.Add(this.nombre);
             this.Name = "Carta";
             this.Text = "Form5";
-            ((System.ComponentModel.ISupportInitialize)(this.atributo)).EndInit();
+            this.Load += new System.EventHandler(this.Carta_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ilustracion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.atributo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +186,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox ilustracion;
         private System.Windows.Forms.TextBox set;
+        private System.Windows.Forms.Button editar;
     }
 }
