@@ -3,8 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Threading;
-using System.Security.Cryptography;
-using System.Collections.Concurrent;
+
 
 namespace SerializableYugi
 {
@@ -167,54 +166,14 @@ namespace SerializableYugi
 
         private void Posibles_Sugerencias(Monstruo iimonstruo)
         {
-
-            FileStream fsMonstruos = new FileStream("Monstruos", FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fsMonstruos.Position < fsMonstruos.Length)
-            {
-               Monstruo monstruo = (Monstruo)bf.Deserialize(fsMonstruos);
-
-                if (iimonstruo.Nombre.ToLower().Contains(monstruo.Soporte.ToLower()) && monstruo.Soporte != "" && monstruo.Soporte.ToLower() != "no")
-                {
-                    if (!ComprobarSugerencias(monstruo, null, null, 1)) Sugerencia.Items.Add(monstruo);
-                }
-
-            }
-            fsMonstruos.Close();
-
-            FileStream fsMagicas = new FileStream("Magicas", FileMode.Open);
-
-            while (fsMagicas.Position < fsMagicas.Length)
-            {
-                Magica magica = (Magica)bf.Deserialize(fsMagicas);
-                if (iimonstruo.Nombre.ToLower().Contains(magica.Soporte.ToLower()) && magica.Soporte != "" && magica.Soporte.ToLower() != "no")
-                {
-                    if (!ComprobarSugerencias(null, magica, null, 2)) Sugerencia.Items.Add(magica);
-                }
-
-            }
-            fsMagicas.Close();
-
-            try
-            {
-                FileStream fsTrampas = new FileStream("Trampas", FileMode.Open);
-                while (fsTrampas.Position < fsTrampas.Length)
-                {
-                   Trampa trampa = (Trampa)bf.Deserialize(fsTrampas);
-                    if (iimonstruo.Nombre.ToLower().Contains(trampa.Soporte.ToLower()) && trampa.Soporte != "" && trampa.Soporte.ToLower() != "no")
-                    {
-                        if (!ComprobarSugerencias(null, null, trampa, 3)) Sugerencia.Items.Add(trampa);
-                    }
-
-                }
-                fsTrampas.Close();
-            }
-            catch (Exception) { }
-
-
-
+            var t = new Thread(() => SugerirMonstruos(iimonstruo));
+            t.Start();
+            var t2 = new Thread(() => SugerirMagicas(iimonstruo));
+            t2.Start();
+            var t3 = new Thread(() => SugerirTrampas(iimonstruo));
+            t3.Start();
         }
-        private bool ComprobarSugerencias(Monstruo iimonstruo, Magica iimagica, Trampa iitrampa, int indicador)
+        private bool ComprobarSugerencias(Karta k, int indicador)
         {
             bool encontrado = false;
             switch (indicador)
@@ -222,21 +181,21 @@ namespace SerializableYugi
                 case 1:
                     for (int i = 0; i < Sugerencia.Items.Count; i++)
                     {
-                        if (iimonstruo.GetType() == Sugerencia.Items[i].GetType() && iimonstruo.Nombre == (Sugerencia.Items[i] as Monstruo).Nombre) encontrado = true;
+                        if ((Sugerencia.Items[i] is Monstruo) && k.Nombre == (Sugerencia.Items[i] as Monstruo).Nombre) encontrado = true;
                     }
                     break;
 
                 case 2:
                     for (int i = 0; i < Sugerencia.Items.Count; i++)
                     {
-                        if (iimagica.GetType() == Sugerencia.Items[i].GetType() && iimagica.Nombre == (Sugerencia.Items[i] as Magica).Nombre) encontrado = true;
+                        if ((Sugerencia.Items[i] is Magica) && k.Nombre == (Sugerencia.Items[i] as Magica).Nombre) encontrado = true;
                     }
                     break;
 
                 case 3:
                     for (int i = 0; i < Sugerencia.Items.Count; i++)
                     {
-                        if (iitrampa.GetType() == Sugerencia.Items[i].GetType() && iitrampa.Nombre == (Sugerencia.Items[i] as Trampa).Nombre) encontrado = true;
+                        if ((Sugerencia.Items[i] is Trampa) && k.Nombre == (Sugerencia.Items[i] as Trampa).Nombre) encontrado = true;
                     }
                     break;
             }
@@ -278,6 +237,61 @@ namespace SerializableYugi
                     sw.Close();
                 }
             }
+        }
+
+        private void SugerirMonstruos(Monstruo iimons) {
+
+            FileStream fsMonstruos = new FileStream("Monstruos", FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            while (fsMonstruos.Position < fsMonstruos.Length)
+            {
+                Monstruo monstruo = (Monstruo)bf.Deserialize(fsMonstruos);
+
+                if (iimons.Nombre.ToLower().Contains(monstruo.Soporte.ToLower()) && monstruo.Soporte != "" && monstruo.Soporte.ToLower() != "no")
+                {
+                    Invoke(new Action(() =>
+                    {
+                        if (!ComprobarSugerencias(monstruo, 1)) Sugerencia.Items.Add(monstruo);
+                    }));
+                }
+            }
+            fsMonstruos.Close();
+        }
+
+        private void SugerirMagicas(Monstruo iimons) {
+            FileStream fsMagicas = new FileStream("Magicas", FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            while (fsMagicas.Position < fsMagicas.Length)
+            {
+                Magica magica = (Magica)bf.Deserialize(fsMagicas);
+                if (iimons.Nombre.ToLower().Contains(magica.Soporte.ToLower()) && magica.Soporte != "" && magica.Soporte.ToLower() != "no")
+                {
+                    Invoke(new Action(() =>
+                    {
+                        if (!ComprobarSugerencias(magica, 2)) Sugerencia.Items.Add(magica);
+                    }));
+                }
+
+            }
+            fsMagicas.Close();
+        }
+
+        private void SugerirTrampas(Monstruo iimons) {
+
+            FileStream fsTrampas = new FileStream("Trampas", FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            while (fsTrampas.Position < fsTrampas.Length)
+            {
+                Trampa trampa = (Trampa)bf.Deserialize(fsTrampas);
+                if (iimons.Nombre.ToLower().Contains(trampa.Soporte.ToLower()) && trampa.Soporte != "" && trampa.Soporte.ToLower() != "no")
+                {
+                    Invoke(new Action(() =>
+                    {
+                        if (!ComprobarSugerencias(trampa, 3)) Sugerencia.Items.Add(trampa);
+                    }));
+                }
+            }
+            fsTrampas.Close();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -301,7 +300,7 @@ namespace SerializableYugi
                 }//SWITCH
                 cr.ShowDialog();
             }
-            catch (Exception ex) { }
+            catch (NullReferenceException) { MessageBox.Show("Tienes que clicar sobre una carta"); }
 
         }
 
@@ -328,6 +327,10 @@ namespace SerializableYugi
             e.Handled = true;
         }
 
+        private void nombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter) { button1_Click(this, e); }
+        }
     }
 }
 

@@ -65,6 +65,7 @@
             this.nombre.Tag = "2";
             this.nombre.Text = "Buscar por nombre";
             this.nombre.Enter += new System.EventHandler(this.nombre_Enter);
+            this.nombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombre_KeyDown);
             this.nombre.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // descripcion
@@ -77,6 +78,7 @@
             this.descripcion.Tag = "3";
             this.descripcion.Text = "Buscar en la descripcion";
             this.descripcion.Enter += new System.EventHandler(this.nombre_Enter);
+            this.descripcion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombre_KeyDown);
             this.descripcion.Leave += new System.EventHandler(this.nombre_Leave);
             // 
             // soporte
@@ -179,6 +181,7 @@
             this.tipo.Tag = "1";
             this.tipo.Text = "Buscar por tipo";
             this.tipo.Enter += new System.EventHandler(this.nombre_Enter);
+            this.tipo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombre_KeyDown);
             this.tipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.extradeck_KeyPress);
             this.tipo.Leave += new System.EventHandler(this.nombre_Leave);
             // 
