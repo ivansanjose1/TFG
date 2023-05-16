@@ -15,21 +15,20 @@ namespace SerializableYugi
         }
 
         string archivo = null;
-        Monstruo mons = null;
-        Magica magica = null;
-        Trampa trampa = null;
         string codigobusc = "";
         string rutadeimagen = "";
         List<Magica> mags = new List<Magica>();
         List<Monstruo> monst = new List<Monstruo>();
         List<Trampa> tramp = new List<Trampa>();
         bool guardada = false;
+        bool cerradoautomatico = false;
         public Form4(string codigo, int modo)
         {
             InitializeComponent();
             switch (modo)
             {
                 case 1:
+                    cerradoautomatico = true;
                     checkBox1.Checked = true;
                     button1.Enabled = false;
                     archivo = checkBox1.Text;
@@ -38,6 +37,7 @@ namespace SerializableYugi
                     BuscarCartas();
                     break;
                 case 2:
+                    cerradoautomatico = true;
                     checkBox2.Checked = true;
                     button1.Enabled = false;
                     archivo = checkBox2.Text;
@@ -45,11 +45,16 @@ namespace SerializableYugi
                     codigobusc = codigo;
                     BuscarCartas();
                     break;
-
-
+                case 3:
+                    cerradoautomatico = true;
+                    checkBox3.Checked = true;
+                    button1.Enabled = false;
+                    archivo = checkBox3.Text;
+                    buscada.Text = codigo;
+                    codigobusc = codigo;
+                    BuscarCartas();
+                    break;
             }
-
-
         }
         private void RellenarTipos(object sender)
         {
@@ -63,7 +68,6 @@ namespace SerializableYugi
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
             panelgen.Enabled = true;
             button2.Enabled = true;
             button1.Enabled = true;
@@ -111,63 +115,63 @@ namespace SerializableYugi
                     case "Magicas":
                         while ((fs.Position < fs.Length))
                         {
-                            magica = (Magica)bf.Deserialize(fs);
-                            if (magica.get_rareza().ToLower().Contains(codigobusc.ToLower()))
+                            Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Rareza.ToLower().Contains(codigobusc.ToLower()))
                             {
-                                Nombre.Text = magica.get_nombre();
-                                Descripcion.Text = magica.getDescripcion();
-                                tipo.Text = magica.get_tipo();
-                                rareza.Text = magica.get_set();
-                                soporte.Text = magica.get_soporte();
-                                set.Text = magica.get_rareza();
-                                copias.Text = "" + magica.get_copias();
-                                rutadeimagen = magica.get_ruta();
+                                Nombre.Text = magica.Nombre;
+                                Descripcion.Text = magica.Descripcion;
+                                tipo.Text = magica.Tipo;
+                                rareza.Text = magica.Set;
+                                soporte.Text = magica.Soporte;
+                                set.Text = magica.Rareza;
+                                copias.Text = "" + magica.Copias;
+                                rutadeimagen = magica.Rutaimagen;
                             }//IF;
-                            else OmitirActualizado(magica, null, null);
+                            else OmitirActualizado(magica);
                         };
                         break;
                     case "Monstruos":
                         while ((fs.Position < fs.Length))
                         {
-                            mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.get_set().ToLower().Contains(codigobusc.ToLower()))
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Set.ToLower().Contains(codigobusc.ToLower()))
                             {
-                                Nombre.Text = mons.get_nombre();
-                                Descripcion.Text = mons.getDescripcion();
-                                tipo.Text = mons.get_tipo();
-                                set.Text = mons.get_set();
-                                soporte.Text = mons.get_soporte();
-                                rareza.Text = mons.get_rareza();
-                                copias.Text = "" + mons.get_copias();
-                                atributo.Text = mons.get_atributo();
-                                attk.Text = mons.get_atk() + "";
-                                def.Text = mons.get_def() + "";
-                                ExtraDeck.Text = mons.getExtraDeck();
-                                subtipo.Text = mons.getSubtipo();
-                                arquetipo.Text = mons.get_arquetipo();
-                                niivel.Text = mons.getNivel() + "";
-                                rutadeimagen = mons.get_ruta();
+                                Nombre.Text = mons.Nombre;
+                                Descripcion.Text = mons.Descripcion;
+                                tipo.Text = mons.Tipo;
+                                set.Text = mons.Set;
+                                soporte.Text = mons.Soporte;
+                                rareza.Text = mons.Rareza;
+                                copias.Text = "" + mons.Copias;
+                                atributo.Text = mons.Atributo;
+                                attk.Text = mons.Atk + "";
+                                def.Text = mons.Def + "";
+                                ExtraDeck.Text = mons.Extradeck;
+                                subtipo.Text = mons.Subtipo;
+                                arquetipo.Text = mons.Arquetipo;
+                                niivel.Text = mons.Nivel + "";
+                                rutadeimagen = mons.Rutaimagen;
 
                             }
-                            else OmitirActualizado(null, mons, null);
+                            else OmitirActualizado(mons);
                         };
                         break;
                     case "Trampas":
-                        while ((fs.Position < fs.Length))
+                        while (fs.Position < fs.Length)
                         {
-                            trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.get_rareza().ToLower().Contains(codigobusc.ToLower()))
+                           Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Rareza.ToLower().Contains(codigobusc.ToLower()))
                             {
-                                Nombre.Text = trampa.get_nombre();
-                                Descripcion.Text = trampa.getDescripcion();
-                                tipo.Text = trampa.get_tipo();
-                                rareza.Text = trampa.get_set();
-                                soporte.Text = trampa.get_soporte();
-                                set.Text = trampa.get_rareza();
-                                copias.Text = "" + trampa.get_copias();
-                                rutadeimagen = trampa.get_ruta();
+                                Nombre.Text = trampa.Nombre;
+                                Descripcion.Text = trampa.Descripcion;
+                                tipo.Text = trampa.Tipo;
+                                rareza.Text = trampa.Set;
+                                soporte.Text = trampa.Soporte;
+                                set.Text = trampa.Rareza;
+                                copias.Text = "" + trampa.Copias;
+                                rutadeimagen = trampa.Rutaimagen;
                             }
-                            else OmitirActualizado(null, null, trampa);
+                            else OmitirActualizado(trampa);
                         }; break;
                 }//SWITCH
                 fs.Close();
@@ -202,45 +206,45 @@ namespace SerializableYugi
                 {
                     case "Magicas":
                         bf.Serialize(fs, new Magica(
+                    rutadeimagen,
                     Nombre.Text,
                     Descripcion.Text,
                     tipo.Text,
-                    rareza.Text,
-                    set.Text,
+                     set.Text,
+                     rareza.Text,
                     soporte.Text,
-                    int.Parse(copias.Text.Trim()),
-                    rutadeimagen
+                    int.Parse(copias.Text.Trim())
                     ));
                         break;
                     case "Monstruos":
                         bf.Serialize(fs, new Monstruo(
-                    Nombre.Text,
-                    Descripcion.Text,
-                    tipo.Text,
-                    atributo.Text,
-                    subtipo.Text,
-                    ExtraDeck.Text,
-                    arquetipo.Text,
-                    rareza.Text,
-                    set.Text,
-                    soporte.Text,
-                    int.Parse(attk.Text.Trim()),
-                    int.Parse(def.Text.Trim()),
-                    int.Parse(niivel.Text.Trim()),
-                    int.Parse(copias.Text.Trim()),
-                    rutadeimagen
+                rutadeimagen,
+                Nombre.Text,
+                Descripcion.Text,
+                tipo.Text,
+                rareza.Text,
+                set.Text,
+                soporte.Text,
+                int.Parse(copias.Text.Trim()),
+                atributo.Text,
+                subtipo.Text,
+                ExtraDeck.Text,
+                arquetipo.Text,
+                int.Parse(attk.Text.Trim()),
+                int.Parse(def.Text.Trim()),
+                int.Parse(niivel.Text.Trim())
                     ));
                         break;
                     case "Trampas":
                         bf.Serialize(fs, new Trampa(
+                    rutadeimagen,
                     Nombre.Text,
                     Descripcion.Text,
                     tipo.Text,
-                    rareza.Text,
                     set.Text,
+                    rareza.Text,
                     soporte.Text,
-                    int.Parse(copias.Text.Trim()),
-                    rutadeimagen
+                    int.Parse(copias.Text.Trim())
                     ));
                         break;
                 }//SWITCH          
@@ -248,22 +252,22 @@ namespace SerializableYugi
                 LimpiarCampos();
                 guardada = true;
                 MessageBox.Show("Tu carta se ha actualizado con exito");
-            }
-            catch (Exception) { }
+                if (cerradoautomatico == true) this.Close();
+                }
+                catch (Exception) { }            
         }
-
-        private void OmitirActualizado(Magica iimags, Monstruo iimons, Trampa iitramp)
+        private void OmitirActualizado(Karta k)
         {
             switch (archivo)
             {
                 case "Magicas":
-                    mags.Add(iimags);
+                    mags.Add((Magica)k);
                     break;
                 case "Monstruos":
-                    monst.Add(iimons);
+                    monst.Add((Monstruo)k);
                     break;
                 case "Trampas":
-                    tramp.Add(iitramp);
+                    tramp.Add((Trampa)k);
                     break;
             }//SWITCH
         }//OMITIR

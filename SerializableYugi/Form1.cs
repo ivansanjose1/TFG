@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SerializableYugi
 {
@@ -10,25 +11,21 @@ namespace SerializableYugi
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Form2 fr2 = new Form2();
             fr2.Show();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Form3 fr3 = new Form3(1);
             fr3.Show();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Form4 fr4 = new Form4();
             fr4.Show();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Icon = Properties.Resources.OBELISKPIXELART;
@@ -38,16 +35,15 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(this.button3, 20);
             Fuente.LocalizarFuente(this.button4, 20);
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             Form6 fr6 = new Form6();
             fr6.Show();
         }
-
         private void button2_MouseEnter(object sender, EventArgs e)
         {
             string boton = (sender as Button).Name;
+            reproducir_sonido();
             switch (boton) {
                 case "button2":
                     (sender as Button).BringToFront();
@@ -81,11 +77,9 @@ namespace SerializableYugi
                     (sender as Button).BackgroundImage = Properties.Resources.YAMICOLORPXART;
                     (sender as Button).ForeColor = System.Drawing.Color.Fuchsia;
                     break;
-
             }
             
         }
-
         private void button2_MouseLeave(object sender, EventArgs e)
         {
             string boton = (sender as Button).Name;
@@ -119,10 +113,12 @@ namespace SerializableYugi
                     (sender as Button).BackgroundImage = Properties.Resources.YAMIPXARTBW;
                     (sender as Button).ForeColor = System.Drawing.Color.Gray;
                     break;
-
             }
 
         }
-
+        private void reproducir_sonido() {
+            SoundPlayer sonidito = new SoundPlayer(Properties.Resources.common_00002);
+            sonidito.Play();
+        }
     }
 }

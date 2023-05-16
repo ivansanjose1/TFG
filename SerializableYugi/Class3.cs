@@ -1,4 +1,6 @@
-﻿namespace SerializableYugi
+﻿using System.Collections.Generic;
+
+namespace SerializableYugi
 {
     internal class Formulario
     {
@@ -9,7 +11,6 @@
         {
             return tipomons;
         }//GETTER_TIPOMONS
-
         public static string[] get_tipomags()
         {
             return tipomags;
@@ -18,7 +19,5 @@
         {
             return tipotraps;
         }
-
-
     }
 }

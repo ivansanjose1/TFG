@@ -17,7 +17,6 @@ namespace SerializableYugi
         {
             InitializeComponent();
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             bool almostdone = false;
@@ -74,21 +73,21 @@ namespace SerializableYugi
             FileStream fs = new FileStream(archivo, FileMode.Append);
             BinaryFormatter bf = new BinaryFormatter();
             monstruo = new Monstruo(
+                rutadeimagen,
                 Nombre.Text,
                 Descripcion.Text,
                 tipo.Text,
+                rareza.Text,
+                set.Text,
+                soporte.Text,
+                int.Parse(copias.Text.Trim()),
                 atributo.Text,
                 subtipo.Text,
                 ExtraDeck.Text,
                 textBox10.Text,
-                rareza.Text,
-                set.Text,
-                soporte.Text,
                 int.Parse(attk.Text.Trim()),
                 int.Parse(def.Text.Trim()),
-                int.Parse(niivel.Text.Trim()),
-                int.Parse(copias.Text.Trim()),
-                rutadeimagen
+                int.Parse(niivel.Text.Trim())               
                 );
             bf.Serialize(fs, monstruo);
             fs.Close();
@@ -99,14 +98,14 @@ namespace SerializableYugi
             FileStream fs = new FileStream(archivo, FileMode.Append);
             BinaryFormatter bf = new BinaryFormatter();
             magica = new Magica(
+                rutadeimagen,
                 Nombre.Text,
                 Descripcion.Text,
                 tipo.Text,
-                rareza.Text,
                 set.Text,
+                rareza.Text,
                 soporte.Text,
-                int.Parse(copias.Text.Trim()),
-                rutadeimagen
+                int.Parse(copias.Text.Trim())            
                 );
             bf.Serialize(fs, magica);
             fs.Close();
@@ -117,14 +116,14 @@ namespace SerializableYugi
             FileStream fs = new FileStream(archivo, FileMode.Append);
             BinaryFormatter bf = new BinaryFormatter();
             trampa = new Trampa(
+                rutadeimagen,
                 Nombre.Text,
                 Descripcion.Text,
                 tipo.Text,
-                rareza.Text,
                 set.Text,
+                rareza.Text,
                 soporte.Text,
-                int.Parse(copias.Text.Trim()),
-                rutadeimagen
+                int.Parse(copias.Text.Trim())                
                 );
             bf.Serialize(fs, trampa);
             fs.Close();
@@ -151,13 +150,13 @@ namespace SerializableYugi
         private void Form2_Load(object sender, EventArgs e)
         {
             Fuente.CargarFuente();
-            Fuente.LocalizarFuente(panelCHK, 8);
-            Fuente.LocalizarFuente(paneletiquetas1, 8);
-            Fuente.LocalizarFuente(panelgen, 8);
-            Fuente.LocalizarFuente(panelmonst, 8);
-            Fuente.LocalizarFuente(panelmons2, 8);
-            Fuente.LocalizarFuente(button1, 8);
-            Fuente.LocalizarFuente(button2, 8);
+            Fuente.LocalizarFuente(panelCHK, 9);
+            Fuente.LocalizarFuente(paneletiquetas1, 9);
+            Fuente.LocalizarFuente(panelgen, 9);
+            Fuente.LocalizarFuente(panelmonst, 9);
+            Fuente.LocalizarFuente(panelmons2, 9);
+            Fuente.LocalizarFuente(button1, 9);
+            Fuente.LocalizarFuente(button2, 9);
             this.Icon = Properties.Resources.SLIFERPIXELART;
         }
 

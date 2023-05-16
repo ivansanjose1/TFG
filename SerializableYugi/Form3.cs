@@ -12,19 +12,13 @@ namespace SerializableYugi
         {
             InitializeComponent();
             this.modo = iimodo;
-        }
-        List<Monstruo> listmons = new List<Monstruo>();
-        List<Magica> listmagicas = new List<Magica>();
-        List<Trampa> listrampa = new List<Trampa>();
-        Monstruo mons = null;
-        Magica magica = null;
-        Trampa trampa = null;
+        }//CONSTRUCTOR
         string archivo = null;
         int modo;
-        string archivonoexiste = "Aun no tienes un archivo de ";
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             panel1.Enabled = true;
+            button1.Enabled = true;
             tipo.Items.Clear();
             switch ((sender as RadioButton).Name)
             {
@@ -47,6 +41,7 @@ namespace SerializableYugi
             Fuente.LocalizarFuente(Magicas, 8);
             Fuente.LocalizarFuente(Trampas, 8);
             Fuente.LocalizarFuente(button1, 8);
+            Fuente.LocalizarFuente(label1, 8);
         }
 
         private void HabilitarMonstruos()
@@ -96,20 +91,20 @@ namespace SerializableYugi
 
                         while (fs.Position < fs.Length)
                         {
-                            magica = (Magica)bf.Deserialize(fs);
-                            if (magica.get_tipo().ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(magica);
+                            Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Tipo.ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
-                            mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.get_tipo().ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(mons);
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Tipo.ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
                         while (fs.Position < fs.Length)
                         {
-                            trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.get_tipo().ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(trampa);
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Tipo.ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(trampa);
                         }; break;
                 }//SWITCH
 
@@ -130,20 +125,20 @@ namespace SerializableYugi
 
                         while (fs.Position < fs.Length)
                         {
-                            magica = (Magica)bf.Deserialize(fs);
-                            if (magica.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
+                           Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
-                            mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(mons);
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
                         while (fs.Position < fs.Length)
                         {
-                            trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(trampa);
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(trampa);
                         }; break;
                 }//SWITCH
 
@@ -164,7 +159,7 @@ namespace SerializableYugi
 
         public void LimpiarTexto(object sender)
         {
-            if (sender.GetType().Equals(nombre.GetType())) (sender as TextBox).Clear();
+            if (sender is TextBox) (sender as TextBox).Clear();
         }
 
         private void BuscarArquetipo()
@@ -178,20 +173,20 @@ namespace SerializableYugi
                     case "Magicas":
                         while (fs.Position < fs.Length)
                         {
-                            magica = (Magica)bf.Deserialize(fs);
-                            if (magica.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
+                           Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
-                            mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
+                           Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
                         while (fs.Position < fs.Length)
                         {
-                            trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
+                           Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
                         }; break;
                 }//SWITCH
             }
@@ -216,20 +211,20 @@ namespace SerializableYugi
                     case "Magicas":
                         while (fs.Position < fs.Length)
                         {
-                            magica = (Magica)bf.Deserialize(fs);
-                            if (magica.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
+                           Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
-                            mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
+                           Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
                         while (fs.Position < fs.Length)
                         {
-                            trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(trampa);
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(trampa);
                         }; break;
                 }//SWITCH
                 fs.Close();
@@ -246,8 +241,8 @@ namespace SerializableYugi
                 BinaryFormatter bf = new BinaryFormatter();
                 while (fs.Position < fs.Length)
                 {
-                    mons = (Monstruo)bf.Deserialize(fs);
-                    if (mons.getSubtipo().Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                   Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.Subtipo.Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
                 };
                 fs.Close();
             }
@@ -262,8 +257,8 @@ namespace SerializableYugi
                 BinaryFormatter bf = new BinaryFormatter();
                 while (fs.Position < fs.Length)
                 {
-                    mons = (Monstruo)bf.Deserialize(fs);
-                    if (mons.getExtraDeck().Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                   Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.Extradeck.Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
                 };
                 fs.Close();
             }
@@ -278,19 +273,13 @@ namespace SerializableYugi
                 BinaryFormatter bf = new BinaryFormatter();
                 while (fs.Position < fs.Length)
                 {
-                    mons = (Monstruo)bf.Deserialize(fs);
-                    if (mons.getNivel().Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
+                   Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.Nivel.Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
                 };
                 fs.Close();
             }
             catch (FileNotFoundException) { MensajeNotFound(); }
         }
-
-        private void button2_Click(object sender, EventArgs e)//ESTE BOTON ES EL DE LA ACTUALIZACION
-        {
-
-        }
-
         private void MostrarCarta(Monstruo m, Magica ma, Trampa t)
         {
 
@@ -300,13 +289,13 @@ namespace SerializableYugi
                 switch (archivo)
                 {
                     case "Monstruos":
-                        cr = new Carta(m.get_nombre(), m.getDescripcion(), " " + m.get_atk(), " " + m.get_def(), m.get_tipo(), m.get_atributo(), m.get_set(), m.get_ruta(), 1);
+                        cr = new Carta(m.Nombre, m.Descripcion, " " + m.Atk, " " + m.Def, m.Tipo, m.Atributo, m.Set, m.Rutaimagen, 1);
                         break;
                     case "Magicas":
-                        cr = new Carta(ma.get_nombre(), ma.get_tipo(), ma.getDescripcion(), ma.get_rareza(), ma.get_ruta(), 2);
+                        cr = new Carta(ma.Nombre, ma.Tipo, ma.Descripcion, ma.Rareza, ma.Rutaimagen, 2);
                         break;
                     case "Trampas":
-                        cr = new Carta(t.get_nombre(), t.get_tipo(), t.getDescripcion(), t.get_rareza(), t.get_ruta(), 3);
+                        cr = new Carta(t.Nombre, t.Tipo, t.Descripcion, t.Rareza, t.Rutaimagen, 3);
                         break;
 
                 }//SWITCH
@@ -318,7 +307,7 @@ namespace SerializableYugi
 
         private void MensajeNotFound()
         {
-            MessageBox.Show(archivonoexiste + archivo);
+            MessageBox.Show("Aun no tienes un archivo de " + archivo);
         }
 
         private void nombre_Leave(object sender, EventArgs e)

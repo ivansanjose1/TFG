@@ -61,6 +61,15 @@ namespace SerializableYugi.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream common_00002 {
+            get {
+                return ResourceManager.GetStream("common_00002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap DARK {
@@ -86,6 +95,16 @@ namespace SerializableYugi.Properties {
         internal static System.Drawing.Bitmap DIVINE {
             get {
                 object obj = ResourceManager.GetObject("DIVINE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DUEL_ACADEMY {
+            get {
+                object obj = ResourceManager.GetObject("DUEL_ACADEMY", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

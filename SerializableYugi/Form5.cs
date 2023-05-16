@@ -72,6 +72,9 @@ namespace SerializableYugi
                 case 2:
                     fr4 = new Form4(set.Text, 2);
                     break;
+                case 3:
+                    fr4=new Form4(set.Text, 3);
+                    break;
             }
             fr4.Show();
         }

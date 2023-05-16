@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\ygofe\OneDrive\Documents\002 PROGRAMACION EN GENERAL\PRODUCCION\</PublishUrl>
+    <PublishUrl>D:\001 PROYECTO FIN DE CICLO\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -66,7 +66,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -132,6 +132,7 @@
     <Compile Include="Form6.Designer.cs">
       <DependentUpon>Form6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Karta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -180,7 +181,6 @@
     <None Include="ICONOS\OBELISKPIXELART.ico" />
     <None Include="ICONOS\TRAP.png" />
     <None Include="ICONOS\SLIFERPIXELART.ico" />
-    <None Include="Resources\DRAGONALADODERA.png" />
     <None Include="ICONOS\RAPIXELART.ico" />
     <None Include="ICONOS\SPARKBWPXART.png" />
     <None Include="ICONOS\SPARKCOLORPXART.png" />
@@ -190,6 +190,8 @@
     <None Include="ICONOS\MOUNTAINPXARTBW.png" />
     <None Include="ICONOS\SOGENBWPXART.png" />
     <None Include="ICONOS\SOGENCOLORPXART.png" />
+    <None Include="ICONOS\DUEL ACADEMY.png" />
+    <None Include="Resources\common_00002.wav" />
     <Content Include="ROMPECABEZASPIXELART.ico" />
     <Content Include="ICONOS\DARK.png" />
     <None Include="ICONOS\DEFAULTerror.png" />

@@ -41,16 +41,18 @@
             this.subtipo = new System.Windows.Forms.ComboBox();
             this.extradeck = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nivel)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(394, 7);
+            this.listBox1.Location = new System.Drawing.Point(394, 22);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(394, 394);
+            this.listBox1.Size = new System.Drawing.Size(394, 381);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -67,7 +69,7 @@
             // 
             // descripcion
             // 
-            this.descripcion.Location = new System.Drawing.Point(15, 42);
+            this.descripcion.Location = new System.Drawing.Point(15, 51);
             this.descripcion.Multiline = true;
             this.descripcion.Name = "descripcion";
             this.descripcion.Size = new System.Drawing.Size(218, 20);
@@ -79,7 +81,7 @@
             // 
             // soporte
             // 
-            this.soporte.Location = new System.Drawing.Point(15, 122);
+            this.soporte.Location = new System.Drawing.Point(14, 144);
             this.soporte.Name = "soporte";
             this.soporte.Size = new System.Drawing.Size(218, 20);
             this.soporte.TabIndex = 7;
@@ -91,6 +93,7 @@
             // Monstruos
             // 
             this.Monstruos.AutoSize = true;
+            this.Monstruos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Monstruos.Location = new System.Drawing.Point(28, 4);
             this.Monstruos.Name = "Monstruos";
             this.Monstruos.Size = new System.Drawing.Size(74, 17);
@@ -103,6 +106,7 @@
             // Magicas
             // 
             this.Magicas.AutoSize = true;
+            this.Magicas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Magicas.Location = new System.Drawing.Point(119, 4);
             this.Magicas.Name = "Magicas";
             this.Magicas.Size = new System.Drawing.Size(65, 17);
@@ -115,6 +119,7 @@
             // Trampas
             // 
             this.Trampas.AutoSize = true;
+            this.Trampas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Trampas.Location = new System.Drawing.Point(210, 4);
             this.Trampas.Name = "Trampas";
             this.Trampas.Size = new System.Drawing.Size(66, 17);
@@ -126,6 +131,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.Nivel);
             this.panel1.Controls.Add(this.tipo);
             this.panel1.Controls.Add(this.subtipo);
@@ -136,12 +142,12 @@
             this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(13, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(251, 346);
+            this.panel1.Size = new System.Drawing.Size(251, 336);
             this.panel1.TabIndex = 12;
             // 
             // Nivel
             // 
-            this.Nivel.Location = new System.Drawing.Point(15, 164);
+            this.Nivel.Location = new System.Drawing.Point(14, 194);
             this.Nivel.Maximum = new decimal(new int[] {
             12,
             0,
@@ -166,7 +172,7 @@
             // tipo
             // 
             this.tipo.FormattingEnabled = true;
-            this.tipo.Location = new System.Drawing.Point(15, 80);
+            this.tipo.Location = new System.Drawing.Point(14, 98);
             this.tipo.Name = "tipo";
             this.tipo.Size = new System.Drawing.Size(218, 21);
             this.tipo.TabIndex = 14;
@@ -187,7 +193,7 @@
             "Pendulo",
             "Cantante",
             "No"});
-            this.subtipo.Location = new System.Drawing.Point(15, 246);
+            this.subtipo.Location = new System.Drawing.Point(15, 299);
             this.subtipo.Name = "subtipo";
             this.subtipo.Size = new System.Drawing.Size(218, 21);
             this.subtipo.TabIndex = 15;
@@ -206,7 +212,7 @@
             "Xyz",
             "Link",
             "No"});
-            this.extradeck.Location = new System.Drawing.Point(14, 205);
+            this.extradeck.Location = new System.Drawing.Point(15, 246);
             this.extradeck.Name = "extradeck";
             this.extradeck.Size = new System.Drawing.Size(219, 21);
             this.extradeck.TabIndex = 14;
@@ -218,7 +224,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 388);
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(28, 378);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -226,17 +233,32 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(391, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Se han encontrado estas cartas:";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
+            this.BackgroundImage = global::SerializableYugi.Properties.Resources.DUEL_ACADEMY;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Trampas);
             this.Controls.Add(this.Magicas);
             this.Controls.Add(this.Monstruos);
             this.Controls.Add(this.listBox1);
+            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.Name = "Form3";
             this.Text = "Consultar Cartas";
@@ -264,5 +286,6 @@
         private System.Windows.Forms.ComboBox subtipo;
         private System.Windows.Forms.ComboBox extradeck;
         private System.Windows.Forms.NumericUpDown Nivel;
+        private System.Windows.Forms.Label label1;
     }
 }

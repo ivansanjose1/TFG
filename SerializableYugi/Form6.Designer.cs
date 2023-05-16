@@ -37,6 +37,9 @@
             this.Sugerencia = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxBaraja
@@ -47,7 +50,6 @@
             this.listBoxBaraja.Size = new System.Drawing.Size(482, 251);
             this.listBoxBaraja.TabIndex = 0;
             this.listBoxBaraja.Tag = "";
-            this.listBoxBaraja.SelectedIndexChanged += new System.EventHandler(this.listBoxBaraja_SelectedIndexChanged);
             // 
             // listBoxMonstruos
             // 
@@ -81,9 +83,9 @@
             // 
             // Anhadir
             // 
-            this.Anhadir.Location = new System.Drawing.Point(730, 52);
+            this.Anhadir.Location = new System.Drawing.Point(730, 36);
             this.Anhadir.Name = "Anhadir";
-            this.Anhadir.Size = new System.Drawing.Size(89, 42);
+            this.Anhadir.Size = new System.Drawing.Size(89, 24);
             this.Anhadir.TabIndex = 4;
             this.Anhadir.Text = "Añadir";
             this.Anhadir.UseVisualStyleBackColor = true;
@@ -91,9 +93,9 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(730, 100);
+            this.buttonEliminar.Location = new System.Drawing.Point(730, 66);
             this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(89, 42);
+            this.buttonEliminar.Size = new System.Drawing.Size(89, 28);
             this.buttonEliminar.TabIndex = 6;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
@@ -106,12 +108,13 @@
             this.Sugerencia.Name = "Sugerencia";
             this.Sugerencia.Size = new System.Drawing.Size(482, 108);
             this.Sugerencia.TabIndex = 7;
-            this.Sugerencia.Tag = "";
-            this.Sugerencia.SelectedIndexChanged += new System.EventHandler(this.Sugerencia_SelectedIndexChanged);
+            this.Sugerencia.Tag = "4";
+            this.Sugerencia.DoubleClick += new System.EventHandler(this.Sugerencia_DoubleClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(9, 306);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 13);
@@ -121,17 +124,49 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.label2.Location = new System.Drawing.Point(12, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Número de cartas:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(730, 116);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 26);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Limpiar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "txt";
+            this.saveFileDialog1.FileName = "Baraja.txt";
+            this.saveFileDialog1.Title = "Guardar Baraja";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(730, 148);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Guardar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackgroundImage = global::SerializableYugi.Properties.Resources.DUEL_ACADEMY;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(841, 495);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Sugerencia);
@@ -141,6 +176,7 @@
             this.Controls.Add(this.listBoxMagia);
             this.Controls.Add(this.listBoxMonstruos);
             this.Controls.Add(this.listBoxBaraja);
+            this.DoubleBuffered = true;
             this.Name = "Form6";
             this.Text = "Barajas";
             this.Load += new System.EventHandler(this.Form5_Load);
@@ -160,5 +196,8 @@
         private System.Windows.Forms.ListBox Sugerencia;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button2;
     }
 }
