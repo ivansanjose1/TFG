@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Threading;
-
+using System.Configuration;
 
 namespace SerializableYugi
 {
@@ -18,6 +18,7 @@ namespace SerializableYugi
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.EXODIA;
             Thread t = new Thread(new ThreadStart(Monstrar_monstruos));
             Thread t2 = new Thread(new ThreadStart(Monstrar_magicas));
             Thread t3 = new Thread(new ThreadStart(Monstrar_trampas));

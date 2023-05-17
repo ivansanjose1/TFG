@@ -7,6 +7,7 @@ namespace SerializableYugi
 {
     public partial class Form1 : Form
     {
+        SoundPlayer sonidito = new SoundPlayer(Properties.Resources.common_00002);
         public Form1()
         {
             InitializeComponent();
@@ -43,7 +44,7 @@ namespace SerializableYugi
         private void button2_MouseEnter(object sender, EventArgs e)
         {
             string boton = (sender as Button).Name;
-            reproducir_sonido();
+            sonidito.Play();
             switch (boton) {
                 case "button2":
                     (sender as Button).BringToFront();
@@ -82,6 +83,7 @@ namespace SerializableYugi
         }
         private void button2_MouseLeave(object sender, EventArgs e)
         {
+            sonidito.Stop();
             string boton = (sender as Button).Name;
             switch (boton)
             {
@@ -115,10 +117,6 @@ namespace SerializableYugi
                     break;
             }
 
-        }
-        private void reproducir_sonido() {
-            SoundPlayer sonidito = new SoundPlayer(Properties.Resources.common_00002);
-            sonidito.Play();
         }
     }
 }

@@ -106,6 +106,9 @@ namespace SerializableYugi
         }//CHCKED CHANGED
         private void BuscarCartas()
         {
+            mags.Clear();
+            monst.Clear();
+            tramp.Clear();
             try
             {
                 FileStream fs = new FileStream(archivo, FileMode.Open);
@@ -116,14 +119,14 @@ namespace SerializableYugi
                         while ((fs.Position < fs.Length))
                         {
                             Magica magica = (Magica)bf.Deserialize(fs);
-                            if (magica.Rareza.ToLower().Contains(codigobusc.ToLower()))
+                            if (magica.Set.ToLower()==(codigobusc.ToLower()))
                             {
                                 Nombre.Text = magica.Nombre;
                                 Descripcion.Text = magica.Descripcion;
                                 tipo.Text = magica.Tipo;
-                                rareza.Text = magica.Set;
+                                set.Text = magica.Set;
                                 soporte.Text = magica.Soporte;
-                                set.Text = magica.Rareza;
+                                rareza.Text = magica.Rareza;
                                 copias.Text = "" + magica.Copias;
                                 rutadeimagen = magica.Rutaimagen;
                             }//IF;
@@ -134,7 +137,7 @@ namespace SerializableYugi
                         while ((fs.Position < fs.Length))
                         {
                             Monstruo mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.Set.ToLower().Contains(codigobusc.ToLower()))
+                            if (mons.Set.ToLower()==(codigobusc.ToLower()))
                             {
                                 Nombre.Text = mons.Nombre;
                                 Descripcion.Text = mons.Descripcion;
@@ -151,28 +154,28 @@ namespace SerializableYugi
                                 arquetipo.Text = mons.Arquetipo;
                                 niivel.Text = mons.Nivel + "";
                                 rutadeimagen = mons.Rutaimagen;
-
                             }
                             else OmitirActualizado(mons);
                         };
                         break;
                     case "Trampas":
-                        while (fs.Position < fs.Length)
+                        while ((fs.Position < fs.Length))
                         {
                            Trampa trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.Rareza.ToLower().Contains(codigobusc.ToLower()))
+                            if (trampa.Set.ToLower()==(codigobusc.ToLower()))
                             {
                                 Nombre.Text = trampa.Nombre;
                                 Descripcion.Text = trampa.Descripcion;
                                 tipo.Text = trampa.Tipo;
-                                rareza.Text = trampa.Set;
+                                set.Text = trampa.Set;
                                 soporte.Text = trampa.Soporte;
-                                set.Text = trampa.Rareza;
+                                rareza.Text = trampa.Rareza;
                                 copias.Text = "" + trampa.Copias;
                                 rutadeimagen = trampa.Rutaimagen;
                             }
                             else OmitirActualizado(trampa);
-                        }; break;
+                        };
+                        break;
                 }//SWITCH
                 fs.Close();
                 ConvertirArrayEnFichero();
@@ -210,8 +213,8 @@ namespace SerializableYugi
                     Nombre.Text,
                     Descripcion.Text,
                     tipo.Text,
-                     set.Text,
-                     rareza.Text,
+                    rareza.Text,
+                    set.Text,
                     soporte.Text,
                     int.Parse(copias.Text.Trim())
                     ));
@@ -240,9 +243,9 @@ namespace SerializableYugi
                     rutadeimagen,
                     Nombre.Text,
                     Descripcion.Text,
-                    tipo.Text,
-                    set.Text,
+                    tipo.Text,     
                     rareza.Text,
+                    set.Text,
                     soporte.Text,
                     int.Parse(copias.Text.Trim())
                     ));
@@ -336,6 +339,7 @@ namespace SerializableYugi
 
         private void Form4_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.KURIBOH;
             Fuente.CargarFuente();
             Fuente.LocalizarFuente(button1, 8);
             Fuente.LocalizarFuente(button2, 8);

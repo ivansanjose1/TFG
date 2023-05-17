@@ -150,9 +150,9 @@ namespace SerializableYugi
         {
             switch (archivo)
             {
-                case "Monstruos": MostrarCarta((Monstruo)listBox1.SelectedItem, null, null); break;
-                case "Magicas": MostrarCarta(null, (Magica)listBox1.SelectedItem, null); break;
-                case "Trampas": MostrarCarta(null, null, (Trampa)listBox1.SelectedItem); break;
+                case "Monstruos": MostrarCarta((Karta)listBox1.SelectedItem); break;
+                case "Magicas": MostrarCarta((Karta)listBox1.SelectedItem); break;
+                case "Trampas": MostrarCarta((Karta)listBox1.SelectedItem); break;
             }//SWITCH
         }
 
@@ -279,7 +279,7 @@ namespace SerializableYugi
             }
             catch (FileNotFoundException) { MensajeNotFound(); }
         }
-        private void MostrarCarta(Monstruo m, Magica ma, Trampa t)
+        private void MostrarCarta(Karta k)
         {
 
             Carta cr = null;
@@ -288,13 +288,13 @@ namespace SerializableYugi
                 switch (archivo)
                 {
                     case "Monstruos":
-                        cr = new Carta(m.Nombre, m.Descripcion, " " + m.Atk, " " + m.Def, m.Tipo, m.Atributo, m.Set, m.Rutaimagen, 1);
+                        cr = new Carta((k as Monstruo).Nombre, (k as Monstruo).Descripcion, " " + (k as Monstruo).Atk, " " + (k as Monstruo).Def, (k as Monstruo).Tipo, (k as Monstruo).Atributo, (k as Monstruo).Set, (k as Monstruo).Rutaimagen, 1);
                         break;
                     case "Magicas":
-                        cr = new Carta(ma.Nombre, ma.Tipo, ma.Descripcion, ma.Rareza, ma.Rutaimagen, 2);
+                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 2);
                         break;
                     case "Trampas":
-                        cr = new Carta(t.Nombre, t.Tipo, t.Descripcion, t.Rareza, t.Rutaimagen, 3);
+                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 3);
                         break;
 
                 }//SWITCH

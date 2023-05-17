@@ -192,6 +192,8 @@
     <None Include="ICONOS\SOGENCOLORPXART.png" />
     <None Include="ICONOS\DUEL ACADEMY.png" />
     <None Include="Resources\common_00002.wav" />
+    <None Include="ICONOS\KURIBOH.ico" />
+    <None Include="ICONOS\EXODIA.ico" />
     <Content Include="ROMPECABEZASPIXELART.ico" />
     <Content Include="ICONOS\DARK.png" />
     <None Include="ICONOS\DEFAULTerror.png" />

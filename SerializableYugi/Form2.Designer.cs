@@ -128,6 +128,7 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(256, 20);
             this.textBox10.TabIndex = 9;
+            this.textBox10.Text = "No";
             // 
             // attk
             // 
@@ -135,6 +136,7 @@
             this.attk.Name = "attk";
             this.attk.Size = new System.Drawing.Size(256, 20);
             this.attk.TabIndex = 10;
+            this.attk.Text = "0";
             this.attk.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.copias_KeyPress);
             // 
             // def
@@ -143,6 +145,7 @@
             this.def.Name = "def";
             this.def.Size = new System.Drawing.Size(256, 20);
             this.def.TabIndex = 11;
+            this.def.Text = "0";
             this.def.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.copias_KeyPress);
             // 
             // label1
@@ -223,6 +226,7 @@
             this.tipo.Name = "tipo";
             this.tipo.Size = new System.Drawing.Size(299, 21);
             this.tipo.TabIndex = 18;
+            this.tipo.Text = "Guerrero";
             this.tipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // rareza

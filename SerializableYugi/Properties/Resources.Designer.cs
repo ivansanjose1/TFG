@@ -120,12 +120,32 @@ namespace SerializableYugi.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon EXODIA {
+            get {
+                object obj = ResourceManager.GetObject("EXODIA", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap FIRE {
             get {
                 object obj = ResourceManager.GetObject("FIRE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon KURIBOH {
+            get {
+                object obj = ResourceManager.GetObject("KURIBOH", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

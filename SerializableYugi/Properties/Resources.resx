@@ -136,8 +136,14 @@
   <data name="EARTH" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\iconos\earth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="EXODIA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ICONOS\EXODIA.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FIRE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\iconos\fire.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KURIBOH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ICONOS\KURIBOH.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LIGHT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\iconos\light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
