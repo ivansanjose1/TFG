@@ -28,6 +28,7 @@ namespace SerializableYugi
                 panelmonst.Visible = false;
                 button1.Location = new System.Drawing.Point(392, 36);
                 button2.Location = new System.Drawing.Point(480, 36);
+                tipo.Text = "Normal";
             }
             else
             {
@@ -35,6 +36,7 @@ namespace SerializableYugi
                 panelmonst.Visible = true;
                 button1.Location = new System.Drawing.Point(523, 303);
                 button2.Location = new System.Drawing.Point(604, 303);
+                tipo.Text = "Guerrero";
             }
             foreach (CheckBox ch in panelCHK.Controls)
             {
@@ -91,7 +93,7 @@ namespace SerializableYugi
                 textBox10.Text,
                 int.Parse(attk.Text.Trim()),
                 int.Parse(def.Text.Trim()),
-                int.Parse(niivel.Text.Trim())               
+                int.Parse(niivel.Text.Trim())
                 );
             bf.Serialize(fs, monstruo);
             fs.Close();
@@ -109,7 +111,7 @@ namespace SerializableYugi
                 rareza.Text,
                 set.Text,
                 soporte.Text,
-                int.Parse(copias.Text.Trim())            
+                int.Parse(copias.Text.Trim())
                 );
             bf.Serialize(fs, magica);
             fs.Close();
@@ -127,7 +129,7 @@ namespace SerializableYugi
                 rareza.Text,
                 set.Text,
                 soporte.Text,
-                int.Parse(copias.Text.Trim())                
+                int.Parse(copias.Text.Trim())
                 );
             bf.Serialize(fs, trampa);
             fs.Close();
@@ -137,11 +139,16 @@ namespace SerializableYugi
         {
             if (ValidarInsercion() == true)
             {
-                switch (archivo)
+                if (VerificarExistencia() == true) MessageBox.Show("Ya tienes una carta con ese codigo");
+                else
                 {
-                    case "Monstruos": RellenarMonstruo(); break;
-                    case "Magicas": RellenarMagica(); break;
-                    case "Trampas": RellenarTrampa(); break;
+                    switch (archivo)
+                    {
+                        case "Monstruos": RellenarMonstruo(); break;
+                        case "Magicas": RellenarMagica(); break;
+                        case "Trampas": RellenarTrampa(); break;
+                    }
+                    MessageBox.Show("Tu carta ha sido guardada con éxito");
                 }
                 foreach (Control c in panelgen.Controls)
                 {
@@ -151,7 +158,6 @@ namespace SerializableYugi
                 {
                     c.Text = "";
                 }
-                MessageBox.Show("Tu carta ha sido guardada con éxito");
             }
             else MessageBox.Show("No es conveniente dejar campos vacíos");
         }
@@ -185,11 +191,13 @@ namespace SerializableYugi
             e.Handled = true;
         }
 
-        private bool ValidarInsercion() {
+        private bool ValidarInsercion()
+        {
             bool validado = true;
             if (checkBox1.Checked == true)
             {
-                foreach (Control c in panelgen.Controls) {
+                foreach (Control c in panelgen.Controls)
+                {
                     if (c.Text == "") validado = false;
                 }
                 foreach (Control c in panelmonst.Controls)
@@ -197,7 +205,8 @@ namespace SerializableYugi
                     if (c.Text == "") validado = false;
                 }
             }//IF
-            else if (checkBox2.Checked==true || checkBox3.Checked==true) {
+            else if (checkBox2.Checked == true || checkBox3.Checked == true)
+            {
                 foreach (Control c in panelgen.Controls)
                 {
                     if (c.Text == "") validado = false;
@@ -205,6 +214,25 @@ namespace SerializableYugi
             }
             return validado;
 
+        }
+
+        private bool VerificarExistencia()
+        {
+            bool existe = false;
+            try
+            {
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+
+                while (!existe && fs.Position < fs.Length)
+                {
+                    Karta k = (Karta)bf.Deserialize(fs);
+                    if (k.Set.ToLower() == set.Text.ToLower()) existe = true;
+                }
+                fs.Close();
+            }
+            catch (Exception) { }
+            return existe;
         }
     }
 

@@ -4,7 +4,7 @@ namespace SerializableYugi
 {
 
     [Serializable]
-    internal class Monstruo:Karta
+    internal class Monstruo : Karta
     {
         string atributo;
         string subtipo;
@@ -13,7 +13,7 @@ namespace SerializableYugi
         int atk;
         int def;
         int nivel;
-        public Monstruo(string rutaimagen, string nombre, string descripcion, string tipo, string rareza, string set, string soporte, int copias, string atributo, string subtipo, string extradeck, string arquetipo, int atk, int def, int nivel):base(rutaimagen, nombre, descripcion, tipo, rareza, set, soporte, copias)
+        public Monstruo(string rutaimagen, string nombre, string descripcion, string tipo, string rareza, string set, string soporte, int copias, string atributo, string subtipo, string extradeck, string arquetipo, int atk, int def, int nivel) : base(rutaimagen, nombre, descripcion, tipo, rareza, set, soporte, copias)
         {
             this.Atributo = atributo;
             this.Subtipo = subtipo;

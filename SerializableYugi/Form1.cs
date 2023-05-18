@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Media;
+using System.Windows.Forms;
 
 namespace SerializableYugi
 {
@@ -43,9 +43,10 @@ namespace SerializableYugi
         }
         private void button2_MouseEnter(object sender, EventArgs e)
         {
-            string boton = (sender as Button).Name;
             sonidito.Play();
-            switch (boton) {
+            string boton = (sender as Button).Name;
+            switch (boton)
+            {
                 case "button2":
                     (sender as Button).BringToFront();
                     (sender as Button).Height = 239;
@@ -79,7 +80,7 @@ namespace SerializableYugi
                     (sender as Button).ForeColor = System.Drawing.Color.Fuchsia;
                     break;
             }
-            
+
         }
         private void button2_MouseLeave(object sender, EventArgs e)
         {

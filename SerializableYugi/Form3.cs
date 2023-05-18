@@ -124,7 +124,7 @@ namespace SerializableYugi
 
                         while (fs.Position < fs.Length)
                         {
-                           Magica magica = (Magica)bf.Deserialize(fs);
+                            Magica magica = (Magica)bf.Deserialize(fs);
                             if (magica.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
@@ -172,19 +172,19 @@ namespace SerializableYugi
                     case "Magicas":
                         while (fs.Position < fs.Length)
                         {
-                           Magica magica = (Magica)bf.Deserialize(fs);
+                            Magica magica = (Magica)bf.Deserialize(fs);
                             if (magica.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
-                           Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
                             if (mons.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
                         while (fs.Position < fs.Length)
                         {
-                           Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
                             if (trampa.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
                         }; break;
                 }//SWITCH
@@ -210,13 +210,13 @@ namespace SerializableYugi
                     case "Magicas":
                         while (fs.Position < fs.Length)
                         {
-                           Magica magica = (Magica)bf.Deserialize(fs);
+                            Magica magica = (Magica)bf.Deserialize(fs);
                             if (magica.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
-                           Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
                             if (mons.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
@@ -240,7 +240,7 @@ namespace SerializableYugi
                 BinaryFormatter bf = new BinaryFormatter();
                 while (fs.Position < fs.Length)
                 {
-                   Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    Monstruo mons = (Monstruo)bf.Deserialize(fs);
                     if (mons.Subtipo.Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
                 };
                 fs.Close();
@@ -256,7 +256,7 @@ namespace SerializableYugi
                 BinaryFormatter bf = new BinaryFormatter();
                 while (fs.Position < fs.Length)
                 {
-                   Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    Monstruo mons = (Monstruo)bf.Deserialize(fs);
                     if (mons.Extradeck.Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
                 };
                 fs.Close();
@@ -272,7 +272,7 @@ namespace SerializableYugi
                 BinaryFormatter bf = new BinaryFormatter();
                 while (fs.Position < fs.Length)
                 {
-                   Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    Monstruo mons = (Monstruo)bf.Deserialize(fs);
                     if (mons.Nivel.Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
                 };
                 fs.Close();
@@ -329,7 +329,7 @@ namespace SerializableYugi
 
         private void nombre_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter) { button1_Click(this, e); }
+            if (e.KeyCode == Keys.Enter) { button1_Click(this, e); }
         }
     }
 }

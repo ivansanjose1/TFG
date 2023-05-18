@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SerializableYugi
 {
@@ -39,8 +34,9 @@ namespace SerializableYugi
         public string Set { get => set; set => set = value; }
         public string Soporte { get => soporte; set => soporte = value; }
         public int Copias { get => copias; set => copias = value; }
-        
-        public override string ToString() {
+
+        public override string ToString()
+        {
             return nombre;
         }
     }

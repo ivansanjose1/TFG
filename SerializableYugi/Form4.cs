@@ -119,7 +119,7 @@ namespace SerializableYugi
                         while ((fs.Position < fs.Length))
                         {
                             Magica magica = (Magica)bf.Deserialize(fs);
-                            if (magica.Set.ToLower()==(codigobusc.ToLower()))
+                            if (magica.Set.ToLower() == (codigobusc.ToLower()))
                             {
                                 Nombre.Text = magica.Nombre;
                                 Descripcion.Text = magica.Descripcion;
@@ -137,7 +137,7 @@ namespace SerializableYugi
                         while ((fs.Position < fs.Length))
                         {
                             Monstruo mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.Set.ToLower()==(codigobusc.ToLower()))
+                            if (mons.Set.ToLower() == (codigobusc.ToLower()))
                             {
                                 Nombre.Text = mons.Nombre;
                                 Descripcion.Text = mons.Descripcion;
@@ -161,8 +161,8 @@ namespace SerializableYugi
                     case "Trampas":
                         while ((fs.Position < fs.Length))
                         {
-                           Trampa trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.Set.ToLower()==(codigobusc.ToLower()))
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Set.ToLower() == (codigobusc.ToLower()))
                             {
                                 Nombre.Text = trampa.Nombre;
                                 Descripcion.Text = trampa.Descripcion;
@@ -243,7 +243,7 @@ namespace SerializableYugi
                     rutadeimagen,
                     Nombre.Text,
                     Descripcion.Text,
-                    tipo.Text,     
+                    tipo.Text,
                     rareza.Text,
                     set.Text,
                     soporte.Text,
@@ -256,8 +256,8 @@ namespace SerializableYugi
                 guardada = true;
                 MessageBox.Show("Tu carta se ha actualizado con exito");
                 if (cerradoautomatico == true) this.Close();
-                }
-                catch (Exception) { }            
+            }
+            catch (Exception) { }
         }
         private void OmitirActualizado(Karta k)
         {

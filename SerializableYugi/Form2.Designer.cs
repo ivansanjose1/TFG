@@ -226,7 +226,6 @@
             this.tipo.Name = "tipo";
             this.tipo.Size = new System.Drawing.Size(299, 21);
             this.tipo.TabIndex = 18;
-            this.tipo.Text = "Guerrero";
             this.tipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipo_KeyPress);
             // 
             // rareza
