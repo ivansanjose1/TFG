@@ -91,19 +91,19 @@ namespace SerializableYugi
                         while (fs.Position < fs.Length)
                         {
                             Magica magica = (Magica)bf.Deserialize(fs);
-                            if (magica.Tipo.ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(magica);
+                            if (magica.Tipo.ToLower()==(tipo.Text.ToLower())) listBox1.Items.Add(magica);
                         }; break;
                     case "Monstruos":
                         while (fs.Position < fs.Length)
                         {
                             Monstruo mons = (Monstruo)bf.Deserialize(fs);
-                            if (mons.Tipo.ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(mons);
+                            if (mons.Tipo.ToLower()==(tipo.Text.ToLower())) listBox1.Items.Add(mons);
                         }; break;
                     case "Trampas":
                         while (fs.Position < fs.Length)
                         {
                             Trampa trampa = (Trampa)bf.Deserialize(fs);
-                            if (trampa.Tipo.ToLower().Contains(tipo.Text.ToLower())) listBox1.Items.Add(trampa);
+                            if (trampa.Tipo.ToLower()==(tipo.Text.ToLower())) listBox1.Items.Add(trampa);
                         }; break;
                 }//SWITCH
 
@@ -288,13 +288,13 @@ namespace SerializableYugi
                 switch (archivo)
                 {
                     case "Monstruos":
-                        cr = new Carta((k as Monstruo).Nombre, (k as Monstruo).Descripcion, " " + (k as Monstruo).Atk, " " + (k as Monstruo).Def, (k as Monstruo).Tipo, (k as Monstruo).Atributo, (k as Monstruo).Set, (k as Monstruo).Rutaimagen, 1);
+                        cr = new Carta((k as Monstruo).Nombre, (k as Monstruo).Descripcion, " " + (k as Monstruo).Atk, " " + (k as Monstruo).Def, (k as Monstruo).Tipo, (k as Monstruo).Atributo, (k as Monstruo).Set, (k as Monstruo).Rutaimagen, 1, k.Rareza, k.Copias);
                         break;
                     case "Magicas":
-                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 2);
+                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 2, k.Rareza, k.Copias);
                         break;
                     case "Trampas":
-                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 3);
+                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 3, k.Rareza, k.Copias);
                         break;
 
                 }//SWITCH

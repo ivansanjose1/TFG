@@ -149,6 +149,7 @@ namespace SerializableYugi
                         case "Trampas": RellenarTrampa(); break;
                     }
                     MessageBox.Show("Tu carta ha sido guardada con éxito");
+                    rutadeimagen = "";
                 }
                 foreach (Control c in panelgen.Controls)
                 {

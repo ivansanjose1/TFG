@@ -7,7 +7,7 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SerializableYugi.exe.manifest" size="7240">
+    <dependentAssembly dependencyType="install" codebase="Application Files\SerializableYugi_1_0_0_6\SerializableYugi.exe.manifest" size="7240">
       <assemblyIdentity name="SerializableYugi.exe" version="1.0.0.6" publicKeyToken="0000000000000000" language="es-VE" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
