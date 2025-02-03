@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SerializableYugi
@@ -20,41 +11,47 @@ namespace SerializableYugi
         {
             InitializeComponent();
             this.modo = iimodo;
-        }
-        string[] tipomons = { "Guerrero", "Demonio", "Lanzador de Conjuros", "Máquina", "Bestia", "Bestia Alada", "Guerrero-Bestia", "Pez", "Serpiente Marina", "Aqua", "Reptil", "Dinosaurio", "Dragón", "Hada", "Zombi", "Roca", "Psíquico", "Piro", "Trueno", "Planta", "Insecto", "Wyrm", "Bestia Divina", "Ciberso" };
-        string[] tipomags = { "Normal", "Juego Rápido", "Continua", "Equipo", "Campo", "Ritual" };
-        string[] tipotraps = { "Normal", "Continua", "Contraefecto" };
-        List<Monstruo> listmons = new List<Monstruo>();
-        List<Magica> listmagicas = new List<Magica>();
-        List<Trampa> listrampa = new List<Trampa>();
-        Monstruo mons = null;
-        Magica magica = null;
-        Trampa trampa = null;
+        }//CONSTRUCTOR
         string archivo = null;
         int modo;
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             panel1.Enabled = true;
+            button1.Enabled = true;
             tipo.Items.Clear();
-            switch ((sender as RadioButton).Name) {
-                case "Monstruos": HabilitarMonstruos(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipomons); break;
-                case "Magicas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipomags); break;
-                case "Trampas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(tipotraps); break;
+            switch ((sender as RadioButton).Name)
+            {
+                case "Monstruos": HabilitarMonstruos(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(Formulario.get_tipomons()); break;
+                case "Magicas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(Formulario.get_tipomags()); break;
+                case "Trampas": HabilitarMagicasYTrampas(); archivo = (sender as RadioButton).Name; tipo.Items.AddRange(Formulario.get_tipotraps()); break;
             }
 
         }
         private void Form3_Load(object sender, EventArgs e)
         {
-
+            this.Icon = Properties.Resources.RAPIXELART;
+            foreach (Control c in panel1.Controls)
+            {
+                Fuente.LocalizarFuente(c, 8);
+            }
+            Fuente.LocalizarFuente(listBox1, 9);
+            Fuente.LocalizarFuente(Monstruos, 8);
+            Fuente.LocalizarFuente(Magicas, 8);
+            Fuente.LocalizarFuente(Trampas, 8);
+            Fuente.LocalizarFuente(button1, 8);
+            Fuente.LocalizarFuente(label1, 8);
         }
 
-        private void HabilitarMonstruos() {
-            foreach (Control ct in panel1.Controls) {
+        private void HabilitarMonstruos()
+        {
+            foreach (Control ct in panel1.Controls)
+            {
                 ct.Enabled = true;
             }
         }
 
-        private void HabilitarMagicasYTrampas() {
+        private void HabilitarMagicasYTrampas()
+        {
             nombre.Enabled = true;
             descripcion.Enabled = true;
             soporte.Enabled = true;
@@ -67,7 +64,8 @@ namespace SerializableYugi
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            switch (modo) {
+            switch (modo)
+            {
                 case 1: Buscar_PorTipo(); break;
                 case 2: BuscarPorNombre(); break;
                 case 3: BuscarEnDescripcion(); break;
@@ -76,121 +74,121 @@ namespace SerializableYugi
                 case 6: BuscarporExtraDeck(); break;
                 case 7: BuscarPorNivel(); break;
             }
-
+            ReestablecerTextos();
         }
 
-        private void Buscar_PorTipo() {
-            switch (archivo)
-            {
-                case "Monstruos": RellenarListaMonstruos(); break;
-                case "Magicas": RellenarListaMagicas(); break;
-                case "Trampas": RellenarListaTrampas(); break;
-            }//SWITCH
-        }//BUSCARPORTIPO
-        private void RellenarListaMonstruos() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
-            {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-            }
-            fs.Close();
-        }//RELLENAR
-
-        private void RellenarListaMagicas() {
+        private void Buscar_PorTipo()
+        {
             try
             {
                 FileStream fs = new FileStream(archivo, FileMode.Open);
                 BinaryFormatter bf = new BinaryFormatter();
-                while (fs.Position < fs.Length)
+                switch (archivo)
                 {
-                    magica = (Magica)bf.Deserialize(fs);
-                    if (magica.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(magica);
-                }
+                    case "Magicas":
+
+                        while (fs.Position < fs.Length)
+                        {
+                            Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Tipo.ToLower() == (tipo.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Tipo.ToLower() == (tipo.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Tipo.ToLower() == (tipo.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+
                 fs.Close();
             }
-            catch (Exception) { MessageBox.Show("No tienes una lista de para esta opcion"); }
-        }//RELLENARMAGS
+            catch (FileNotFoundException) { MensajeNotFound(); }
+        }//BUSCARPORTIPO
 
-        private void RellenarListaTrampas() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
+        private void BuscarPorNombre()
+        {
+            try
             {
-                trampa = (Trampa)bf.Deserialize(fs);
-                if (trampa.get_tipo().Equals(tipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(trampa);
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                switch (archivo)
+                {
+                    case "Magicas":
+
+                        while (fs.Position < fs.Length)
+                        {
+                            Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Nombre.ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+
+                fs.Close();
             }
-            fs.Close();
-        }
-
-        private void BuscarPorNombre() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo) {
-                case "Magicas":
-
-                    while (fs.Position < fs.Length)
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(magica);
-                    }; break;
-                case "Monstruos":
-                    while (fs.Position < fs.Length)
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(mons);
-                    }; break;
-                case "Trampas":
-                    while (fs.Position < fs.Length)
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.get_nombre().ToLower().Contains(nombre.Text.ToLower())) listBox1.Items.Add(trampa);
-                    }; break;
-            }//SWITCH
-
-            fs.Close();
-
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-                switch (archivo) {
-                    case "Monstruos": MostrarCarta((Monstruo)listBox1.SelectedItem, null, null); break;
-                    case "Magicas": MostrarCarta(null, (Magica)listBox1.SelectedItem, null); break;
-                    case "Trampas": MostrarCarta(null, null, (Trampa)listBox1.SelectedItem); break;
-                }//SWITCH
-        }
-
-        public void LimpiarTexto(object sender) {
-            if (sender.GetType().Equals(nombre.GetType())) (sender as TextBox).Clear();
-        }
-
-        private void BuscarArquetipo() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
             switch (archivo)
             {
-                case "Magicas":
-                    while (fs.Position < fs.Length)
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
-                    }; break;
-                case "Monstruos":
-                    while (fs.Position < fs.Length)
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
-                    }; break;
-                case "Trampas":
-                    while (fs.Position < fs.Length)
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.get_soporte().ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
-                    }; break;
+                case "Monstruos": MostrarCarta((Karta)listBox1.SelectedItem); break;
+                case "Magicas": MostrarCarta((Karta)listBox1.SelectedItem); break;
+                case "Trampas": MostrarCarta((Karta)listBox1.SelectedItem); break;
             }//SWITCH
+        }
 
+        public void LimpiarTexto(object sender)
+        {
+            if (sender is TextBox) (sender as TextBox).Clear();
+        }
+
+        private void BuscarArquetipo()
+        {
+            FileStream fs = new FileStream(archivo, FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            try
+            {
+                switch (archivo)
+                {
+                    case "Magicas":
+                        while (fs.Position < fs.Length)
+                        {
+                            Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Soporte.ToLower().Contains(soporte.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+            }
+            catch (FileNotFoundException) { MensajeNotFound(); }
             fs.Close();
         }
 
@@ -200,73 +198,88 @@ namespace SerializableYugi
             modo = int.Parse((sender as Control).Tag.ToString());
         }
 
-        private void BuscarEnDescripcion() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            switch (archivo)
+        private void BuscarEnDescripcion()
+        {
+            try
             {
-                case "Magicas":
-                    while (fs.Position < fs.Length)
-                    {
-                        magica = (Magica)bf.Deserialize(fs);
-                        if (magica.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
-                    }; break;
-                case "Monstruos":
-                    while (fs.Position < fs.Length)
-                    {
-                        mons = (Monstruo)bf.Deserialize(fs);
-                        if (mons.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
-                    }; break;
-                case "Trampas":
-                    while (fs.Position < fs.Length)
-                    {
-                        trampa = (Trampa)bf.Deserialize(fs);
-                        if (trampa.getDescripcion().ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(trampa);
-                    }; break;
-            }//SWITCH
-
-            fs.Close();
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                switch (archivo)
+                {
+                    case "Magicas":
+                        while (fs.Position < fs.Length)
+                        {
+                            Magica magica = (Magica)bf.Deserialize(fs);
+                            if (magica.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(magica);
+                        }; break;
+                    case "Monstruos":
+                        while (fs.Position < fs.Length)
+                        {
+                            Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                            if (mons.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(mons);
+                        }; break;
+                    case "Trampas":
+                        while (fs.Position < fs.Length)
+                        {
+                            Trampa trampa = (Trampa)bf.Deserialize(fs);
+                            if (trampa.Descripcion.ToLower().Contains(descripcion.Text.ToLower())) listBox1.Items.Add(trampa);
+                        }; break;
+                }//SWITCH
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }//BUSCAR EN DESCRIPCION
 
-        private void BuscarporSubtipo() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
-            {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.getSubtipo().Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-            };
-            fs.Close();
-        }
-
-        private void BuscarporExtraDeck() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
-            {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.getExtraDeck().Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
-            };
-            fs.Close();
-        }
-
-        private void BuscarPorNivel() {
-            FileStream fs = new FileStream(archivo, FileMode.Open);
-            BinaryFormatter bf = new BinaryFormatter();
-            while (fs.Position < fs.Length)
-            {
-                mons = (Monstruo)bf.Deserialize(fs);
-                if (mons.getNivel().Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
-            };
-            fs.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)//ESTE BOTON ES EL DE LA ACTUALIZACION
+        private void BuscarporSubtipo()
         {
+            try
+            {
 
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.Subtipo.Equals(subtipo.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                };
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MensajeNotFound(); }
         }
 
-        private void MostrarCarta(Monstruo m, Magica ma, Trampa t) {
+        private void BuscarporExtraDeck()
+        {
+            try
+            {
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.Extradeck.Equals(extradeck.Text, StringComparison.OrdinalIgnoreCase)) listBox1.Items.Add(mons);
+                };
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MensajeNotFound(); }
+        }
+
+        private void BuscarPorNivel()
+        {
+            try
+            {
+                FileStream fs = new FileStream(archivo, FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                while (fs.Position < fs.Length)
+                {
+                    Monstruo mons = (Monstruo)bf.Deserialize(fs);
+                    if (mons.Nivel.Equals((int)Nivel.Value)) listBox1.Items.Add(mons);
+                };
+                fs.Close();
+            }
+            catch (FileNotFoundException) { MensajeNotFound(); }
+        }
+        private void MostrarCarta(Karta k)
+        {
 
             Carta cr = null;
             try
@@ -274,21 +287,49 @@ namespace SerializableYugi
                 switch (archivo)
                 {
                     case "Monstruos":
-                        cr = new Carta(m.get_nombre(), m.getDescripcion(), " " + m.get_atk(), " " + m.get_def(), m.get_tipo(), m.get_atributo(), m.get_set());
+                        cr = new Carta((k as Monstruo).Nombre, (k as Monstruo).Descripcion, "" + (k as Monstruo).Atk, "" + (k as Monstruo).Def, (k as Monstruo).Tipo, (k as Monstruo).Atributo, (k as Monstruo).Set, (k as Monstruo).Rutaimagen, 1, k.Rareza, k.Copias, (k as Monstruo).Extradeck, (k as Monstruo).Nivel);
                         break;
                     case "Magicas":
-                        cr = new Carta(ma.get_nombre(), ma.get_tipo(), ma.getDescripcion(), ma.get_rareza());
+                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 2, k.Rareza, k.Copias);
                         break;
                     case "Trampas":
-                        cr = new Carta(t.get_nombre(), t.get_tipo(), t.getDescripcion(), t.get_rareza());
+                        cr = new Carta(k.Nombre, k.Tipo, k.Descripcion, k.Set, k.Rutaimagen, 3, k.Rareza, k.Copias);
                         break;
 
                 }//SWITCH
                 cr.ShowDialog();
             }
-            catch (Exception ex) { }             
-               
+            catch (NullReferenceException) { MessageBox.Show("Tienes que clicar sobre una carta"); }
+
+        }
+
+        private void MensajeNotFound()
+        {
+            MessageBox.Show("Aun no tienes un archivo de " + archivo);
+        }
+
+        private void nombre_Leave(object sender, EventArgs e)
+        {
+            if (!button1.Focused) { (sender as Control).Text = "Buscar por " + (sender as Control).Name; }
+        }
+
+        private void ReestablecerTextos()
+        {
+            foreach (Control c in panel1.Controls)
+            {
+                c.Text = "Buscar por " + c.Name;
             }
         }
+
+        private void extradeck_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void nombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { button1_Click(this, e); }
+        }
+    }
 }
 
